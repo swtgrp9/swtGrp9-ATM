@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ATM.Core.Interfaces
+
 
 namespace ATM.Core
 {
-    public class AirplaneInfo : IAirplaneInfo
+    public class AirplaneInfo
     
     {
         public string Tag { get; set; }
@@ -15,6 +15,8 @@ namespace ATM.Core
         public double Ycoordinate { get; set; }
 
         public double Altitude { get; set; }
+
+        public double Velocity { get; set; }
 
         public DateTime Timestamp { get; set; }
     }

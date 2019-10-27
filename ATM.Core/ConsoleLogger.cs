@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ATM.Core.Interfaces
+namespace ATM.Core
 {
-    interface IAirplaneInfo
+    class ConsoleLogger
     {
     }
 }

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ATM.Core.Interfaces
 {
-    interface IAirplaneInfo
+    public interface ITime
     {
+        DateTime Time { get; }
     }
 }
