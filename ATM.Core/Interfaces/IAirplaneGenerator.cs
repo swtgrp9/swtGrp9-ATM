@@ -6,5 +6,6 @@ namespace ATM.Core.Interfaces
 {
     public interface IAirplaneGenerator
     {
+        IAirplaneInfo Generate(string planeData);
     }
 }
