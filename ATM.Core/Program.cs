@@ -1,4 +1,5 @@
 ﻿using System;
+using ATM.Core.Interfaces;
 
 namespace ATM.Core
 {

@@ -4,7 +4,14 @@ using System.Text;
 
 namespace ATM.Core.Interfaces
 {
-    interface IAirplaneInfo
+    public interface IAirplaneInfo
     {
+        string Tag { get; set; }
+        int X { get; set; }
+        int Y { get; set; }
+
+        double Altitude { get; set; }
+
+        double Velocity { get; set; }
     }
 }
