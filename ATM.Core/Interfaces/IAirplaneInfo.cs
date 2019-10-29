@@ -13,5 +13,9 @@ namespace ATM.Core.Interfaces
         double Altitude { get; set; }
 
         double Velocity { get; set; }
+
+        double Course { get; set; }
+
+        DateTime TimeStamp { get; set; }
     }
 }

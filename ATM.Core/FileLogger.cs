@@ -5,7 +5,9 @@ using ATM.Core.Interfaces;
 
 namespace ATM.Core
 {
-    class FileLogger
+    public class FileLogger
     {
+
+
     }
 }

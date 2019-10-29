@@ -7,7 +7,17 @@ namespace ATM.Core
 {
     public class Mapper : IMapper
     {
-        public Mapper()
+        public string AirplaneTag { get; private set; }
+
+        public int Xcoordinates { get; private set; }
+
+        public int Ycoordinates { get; private set; }
+
+        public int Altitude { get; private set; }
+
+        public DateTime Time { get; private set; }
+
+        public Mapper(string Data)
         {
 
         }
