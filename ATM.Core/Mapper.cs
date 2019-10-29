@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ATM.Core.Interfaces;
+using System.Globalization;
 
 namespace ATM.Core
 {
@@ -21,7 +22,11 @@ namespace ATM.Core
         {
             var dataArray = Data.Split(';');
             if (dataArray.Length != 5 ) { throw new Exception(); }
-            
+            AirplaneTag = dataArray[0];
+            Xcoordinates = int.Parse(dataArray[1]);
+            Ycoordinates = int.Parse(dataArray[2]);
+            Altitude = int.Parse(dataArray[3]);
+            Time = DateTime.ParseExact(dataArray[4], "yyyymmddhhmmssfff", CultureInfo.InvariantCulture);
         }
 
         //public void SetTag(string tag)
@@ -46,7 +51,7 @@ namespace ATM.Core
 
         //public void SetY(int y)
         //{
-            
+
         //}
 
         //public int GetY()
@@ -56,7 +61,7 @@ namespace ATM.Core
 
         //public void SetAlt(int alt)
         //{
-            
+
         //}
 
         //public int GetAlt()
