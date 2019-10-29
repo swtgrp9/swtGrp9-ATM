@@ -19,57 +19,59 @@ namespace ATM.Core
 
         public Mapper(string Data)
         {
-
-        }
-
-        public void SetTag(string tag)
-        {
-
-        }
-
-        public string GetTag()
-        {
-            return string;
-        }
-
-        public void SetX(int x)
-        {
-
-        }
-
-        public int GetX()
-        {
-            return 1;
-        }
-
-        public void SetY(int y)
-        {
+            var dataArray = Data.Split(';');
+            if (dataArray.Length != 5 ) { throw new Exception(); }
             
         }
 
-        public int GetY()
-        {
-            return 1;
-        }
+        //public void SetTag(string tag)
+        //{
 
-        public void SetAlt(int alt)
-        {
+        //}
+
+        //public string GetTag()
+        //{
+        //    return string;
+        //}
+
+        //public void SetX(int x)
+        //{
+
+        //}
+
+        //public int GetX()
+        //{
+        //    return 1;
+        //}
+
+        //public void SetY(int y)
+        //{
             
-        }
+        //}
 
-        public int GetAlt()
-        {
-            return 1;
-        }
+        //public int GetY()
+        //{
+        //    return 1;
+        //}
 
-        public void SetTime(DateTime time)
-        {
+        //public void SetAlt(int alt)
+        //{
+            
+        //}
 
-        }
+        //public int GetAlt()
+        //{
+        //    return 1;
+        //}
 
-        public DateTime GetTime()
-        {
-            return;
-        }
+        //public void SetTime(DateTime time)
+        //{
+
+        //}
+
+        //public DateTime GetTime()
+        //{
+        //    return;
+        //}
     }
 }

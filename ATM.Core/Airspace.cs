@@ -50,7 +50,7 @@ namespace ATM.Core
 
         public void Add(IAirplaneInfo a1)
         {
-            if(_airplanesInAirspace.ContainsKey(a1.Tag)
+            if(_airplanesInAirspace.ContainsKey(a1.Tag))
             {
                 _airplanesInAirspace[a1.Tag] = a1;
             }
@@ -62,7 +62,7 @@ namespace ATM.Core
 
         public void Remove(IAirplaneInfo a1)
         {
-            if (_airplanesInAirspace.ContainsKey(a1.Tag)
+            if (_airplanesInAirspace.ContainsKey(a1.Tag)) 
             {
                 _airplanesInAirspace.Remove(a1.Tag);
             }
