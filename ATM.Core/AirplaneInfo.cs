@@ -23,7 +23,7 @@ namespace ATM.Core
         public double Velocity { get; set; }
 
         public DateTime Timestamp { get; set; }
-
+        public DateTime TimeStamp { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public double Course { get => course; set => course = value % 360; }
 
         public override string ToString()
