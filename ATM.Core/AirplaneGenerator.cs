@@ -14,14 +14,24 @@ namespace ATM.Core
         }
 
         
-        public double CalcVelocity(IAirplaneInfo ap1, IAirplaneInfo ap2)
+        public double CalcVelocity(IAirplaneInfo current, IAirplaneInfo previous)
         {
-            return;
+            var distance = Math.Sqrt(Math.Pow(current.X - previous.X, 2) + Math.Pow(current.Y - previous.Y, 2));
+            var timeDifference = (current.TimeStamp - previous.TimeStamp).TotalSeconds;
+            var totalVelocity = distance / timeDifference;
+            return totalVelocity;
         }
 
-        public double CalcCourse(IAirplaneInfo ap1, IAirplaneInfo ap2)
+        public double CalcCourse(IAirplaneInfo current, IAirplaneInfo previous)
         {
-            return;
+            var Theta = Math.Atan2(previous.Y - current.Y, previous.X - current.X);
+            Theta += Math.PI / 2;
+            var Angle = Theta * (180 / Math.PI);
+            if (Angle < 0)
+            {
+                Angle += 360;
+            }
+            return Angle;
         }
 
         public IAirplaneInfo Generate(string Data)
