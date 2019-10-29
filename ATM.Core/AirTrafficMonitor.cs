@@ -7,5 +7,6 @@ namespace ATM.Core
 {
     class AirTrafficMonitor
     {
+
     }
 }
