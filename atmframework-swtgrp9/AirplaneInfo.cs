@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using atmframework_swtgrp9.Interfaces;
 
-namespace ATM.Core
+namespace atmframework_swtgrp9
 {
     public class AirplaneInfo : IAirplaneInfo
     {

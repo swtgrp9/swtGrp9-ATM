@@ -4,7 +4,7 @@ using System.Text;
 using atmframework_swtgrp9.Interfaces;
 using System.Globalization;
 
-namespace ATM.Core
+namespace atmframework_swtgrp9
 {
     public class Mapper : IMapper
     {

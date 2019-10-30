@@ -4,7 +4,7 @@ using System.Text;
 using TransponderReceiver;
 using atmframework_swtgrp9.Interfaces;
 
-namespace ATM.Core
+namespace atmframework_swtgrp9
 {
     class AirTrafficMonitor
     {
