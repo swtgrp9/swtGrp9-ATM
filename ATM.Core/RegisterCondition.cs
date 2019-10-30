@@ -5,7 +5,7 @@ using ATM.Core.Interfaces;
 
 namespace ATM.Core
 {
-    class Register
+    class RegisterCondition
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ATM.Core.Interfaces
 {
-    public interface IRegister
+    public interface IRegisterCondition
     {
     }
 }

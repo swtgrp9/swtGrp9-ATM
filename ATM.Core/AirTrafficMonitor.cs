@@ -7,6 +7,9 @@ namespace ATM.Core
 {
     class AirTrafficMonitor
     {
-
+        private RegisterCondition
+        private IAirspace<IAirplaneInfo> _airspace;
+        private IAirplaneGenerator _generator;
+        
     }
 }
