@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ATM.Core.Interfaces;
+using atmframework_swtgrp9.Interfaces;
 using System.Globalization;
 
 namespace ATM.Core

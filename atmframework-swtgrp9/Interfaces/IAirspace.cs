@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ATM.Core.Interfaces
+namespace atmframework_swtgrp9.Interfaces
 {
     public interface IAirspace<T>
     {

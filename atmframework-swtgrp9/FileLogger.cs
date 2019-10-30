@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
-using ATM.Core.Interfaces;
+using atmframework_swtgrp9.Interfaces;
 
 namespace ATM.Core
 {
