@@ -40,7 +40,7 @@ namespace ATM.Core
 
             IAirplaneInfo airplane = new AirplaneInfo
             {
-                Tag = m.AirplaneTag,
+                aTag = m.AirplaneTag,
                 X = m.Xcoordinates,
                 Y = m.Ycoordinates,
                 Altitude = m.Altitude,
@@ -63,7 +63,7 @@ namespace ATM.Core
             }
             else
             {
-                PlanesDictionary.Add(airplane.Tag, airplane);
+                PlanesDictionary.Add(airplane.aTag, airplane);
             }
 
             return airplane;

@@ -12,7 +12,7 @@ namespace ATM.Core
 
         public AirplaneInfo() { }
 
-        public string Tag { get; set; }
+        public string aTag { get; set; }
 
         public int X { get; set; }
 
@@ -28,7 +28,7 @@ namespace ATM.Core
 
         public override string ToString()
         {
-            return Tag + " " +
+            return aTag + " " +
                    X + " " +
                    Y + " " +
                    Altitude + " " +
