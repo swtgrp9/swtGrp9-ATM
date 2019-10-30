@@ -5,7 +5,7 @@ using atmframework_swtgrp9.Interfaces;
 
 namespace atmframework_swtgrp9
 {
-    class RegisterCondition
+    class ConditionDetector
     {
     }
 }
