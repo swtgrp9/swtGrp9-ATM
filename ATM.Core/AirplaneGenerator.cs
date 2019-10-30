@@ -44,7 +44,7 @@ namespace ATM.Core
                 X = m.Xcoordinates,
                 Y = m.Ycoordinates,
                 Altitude = m.Altitude,
-                Timestamp = m.Time,
+                TimeStamp = m.Time,
             };
 
             if(PlanesDictionary.ContainsKey(m.AirplaneTag))

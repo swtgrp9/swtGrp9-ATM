@@ -22,8 +22,8 @@ namespace ATM.Core
 
         public double Velocity { get; set; }
 
-        public DateTime Timestamp { get; set; }
-        public DateTime TimeStamp { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime TimeStamp { get; set; }
+        
         public double Course { get => course; set => course = value % 360; }
 
         public override string ToString()
@@ -34,7 +34,7 @@ namespace ATM.Core
                    Altitude + " " +
                    Math.Round(Velocity, 1) + " m/s" +
                    Math.Round(Course, 1) + " degrees" +
-                   Timestamp.ToString("dd/mm/yyyy hh:mm:ss");
+                   TimeStamp.ToString("dd/mm/yyyy hh:mm:ss");
 
         }
     }
