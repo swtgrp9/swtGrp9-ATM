@@ -6,7 +6,7 @@ namespace ATM.Core.Interfaces
 {
     public interface IAirplaneInfo
     {
-        string Tag { get; set; }
+        string aTag { get; set; }
         int X { get; set; }
         int Y { get; set; }
 

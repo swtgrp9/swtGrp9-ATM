@@ -12,7 +12,7 @@ namespace ATM.Core
 
         public AirplaneInfo() { }
 
-        public string Tag { get; set; }
+        public string aTag { get; set; }
 
         public int X { get; set; }
 
@@ -22,19 +22,19 @@ namespace ATM.Core
 
         public double Velocity { get; set; }
 
-        public DateTime Timestamp { get; set; }
-        public DateTime TimeStamp { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime TimeStamp { get; set; }
+        
         public double Course { get => course; set => course = value % 360; }
 
         public override string ToString()
         {
-            return Tag + " " +
+            return aTag + " " +
                    X + " " +
                    Y + " " +
                    Altitude + " " +
                    Math.Round(Velocity, 1) + " m/s" +
                    Math.Round(Course, 1) + " degrees" +
-                   Timestamp.ToString("dd/mm/yyyy hh:mm:ss");
+                   TimeStamp.ToString("dd/mm/yyyy hh:mm:ss");
 
         }
     }
