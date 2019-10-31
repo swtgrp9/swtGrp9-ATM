@@ -47,12 +47,52 @@ namespace atmframework_swtgrp9
 
         public void Register(List<IAirplaneInfo> compareList)
         {
-            for (int i = 0; i < compareList.Count; i++)
+            for (var i = 0; i < compareList.Count; i++)
             {
-                for (int j = 0; j < compareList.Count; j++)
+                for (var j = 0; j < compareList.Count; j++)
                 {
+                    
                     IAirplaneInfo plane1 = compareList[i];
                     IAirplaneInfo plane2 = compareList[j];
+                    var newestplanetime = DateTime.Compare(plane1.TimeStamp, plane2.TimeStamp) < 0
+                        ? plane1.TimeStamp
+                        : plane2.TimeStamp;
+
+                    Tuple<IAirplaneInfo, IAirplaneInfo> temptTuple = new Tuple<IAirplaneInfo, IAirplaneInfo>(plane1, plane2);
+                    SeparationCondition tempCondition = new SeparationCondition(newestplanetime, temptTuple);
+
+                    if (PlaneCollision(plane1, plane2)) //If collision imminent, check if already logged - if not then add it
+                    {
+                        var alreadyLogged = false;
+                        for (var k = 0; k < _conditionList.Count; k++)
+                        {
+                            if (tempCondition.EqualCondition(_conditionList[k]))
+                            {
+                                alreadyLogged = true;
+                            }
+                        }
+
+                        if (alreadyLogged == false)
+                        {
+                            _log.Logs(LOGTYPE.COLLISIONS, new List<string>()
+                            {
+                                "Time: " + tempCondition.Time + " Tag plane 1: " + tempCondition.PairAirplanes.Item1.Tag + " Tag plane 2: " + tempCondition.PairAirplanes.Item2.Tag
+                            });
+
+                            _conditionList.Add(tempCondition);
+                        }
+                    }
+                    else if (!PlaneCollision(plane1, plane2)) //Removes condition from list if not colliding 
+                    {
+                        for (var k = 0; k < _conditionList.Count; k++)
+                        {
+                            if (tempCondition.EqualCondition(_conditionList[k]))
+                            {
+                                _conditionList.Remove(_conditionList[k]);
+                            }
+                            
+                        }
+                    }
 
                 }
             }
