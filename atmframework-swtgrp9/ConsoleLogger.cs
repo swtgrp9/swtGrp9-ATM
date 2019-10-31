@@ -18,7 +18,7 @@ namespace atmframework_swtgrp9
         {
         }
 
-        public void Log(LOGTYPE type, List<string> logMessages)
+        public void Logs(LOGTYPE type, List<string> logMessages)
         {
             switch(type)
             {
@@ -33,7 +33,7 @@ namespace atmframework_swtgrp9
                     break;
 
                 case LOGTYPE.CLEAR:
-                    Clear();
+                    Console.Clear();
 
                     break;
 
@@ -122,5 +122,4 @@ namespace atmframework_swtgrp9
         }
 
     }
-}
  
