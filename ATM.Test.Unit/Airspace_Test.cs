@@ -28,7 +28,10 @@ namespace ATM.Test.Unit
             IAirplaneInfo testPlane1 = Substitute.For<IAirplaneInfo>();
             testPlane1.Tag.Returns("Test1");
 
-            
+            uut.Add(testPlane1);
+            List<IAirplaneInfo> listOfAirplanes = uut.GetAirplanes();
+
+            Assert.That(listOfAirplanes[0].Tag, Is.EqualTo("Test1"));
         }
         
     }
