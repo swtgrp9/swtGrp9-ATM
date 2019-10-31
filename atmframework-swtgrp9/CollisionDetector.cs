@@ -24,9 +24,24 @@ namespace atmframework_swtgrp9
             return _conditionList;
         }
 
+        //Returns true if the separation of the planes drops below the specified threshold in both vertical and horizontal
         private bool PlaneCollision(IAirplaneInfo plane1, IAirplaneInfo plane2)
         {
+            double xDiff = (Math.Pow(Math.Abs(plane1.X - plane2.X), 2));
+            double yDiff = (Math.Pow(Math.Abs(plane1.Y - plane2.Y), 2));
 
+            double horizontalDist = Math.Sqrt(xDiff - yDiff);
+
+            double verticalDist = Math.Abs(plane1.Altitude - plane2.Altitude);
+
+            if ((verticalDist < VerticalMax) && (horizontalDist < HorizontalMax) )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
