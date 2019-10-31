@@ -34,5 +34,22 @@ namespace ATM.Test.Unit
             Assert.That(listOfAirplanes[0].Tag, Is.EqualTo("Test1"));
         }
         
+        [Test]
+        public void AddAirplaneToAirspaceWithOnePlane_AddedCorrectPlane()
+        {
+            IAirplaneInfo testPlane1 = Substitute.For<IAirplaneInfo>();
+            testPlane1.Tag.Returns("Testplane1");
+            uut.Add(testPlane1);
+
+            IAirplaneInfo testPlane2 = Substitute.For<IAirplaneInfo>();
+            testPlane1.Tag.Returns("Testplane2");
+            uut.Add(testPlane1);
+
+            List<IAirplaneInfo> listOfAirplanes = uut.GetAirplanes();
+
+
+
+            Assert.That(listOfAirplanes[1].Tag, Is.EqualTo("Test2"));
+        }
     }
 }
