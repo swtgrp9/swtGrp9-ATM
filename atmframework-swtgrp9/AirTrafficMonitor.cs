@@ -38,7 +38,7 @@ namespace atmframework_swtgrp9
 
                 AcceptAirplane(plane);
 
-                _condition.Detect(_airspace.GetAirplanes());
+                _condition.Register(_airspace.GetAirplanes());
             }
 
             //i guess ting skal printes ud her
@@ -85,7 +85,7 @@ namespace atmframework_swtgrp9
             foreach (var condition in conditions)
             {
                 var logmsg =
-                    $"{condition.Time:dd/mm/yyyy hh:mm:ss} {condition.Pair.Item1.Tag} {condition.Pair.Item2.Tag}";
+                    $"{condition.Time:dd/mm/yyyy hh:mm:ss} {condition.PairAirplanes.Item1.Tag} {condition.PairAirplanes.Item2.Tag}";
                 logMessages.Add(logmsg);
             }
 
