@@ -11,7 +11,7 @@ namespace atmframework_swtgrp9
         private Tuple<IAirplaneInfo, IAirplaneInfo> _pairAirplanes;
         private bool _isLogged;
 
-        public Datetime Time
+        public DateTime Time
         {
             get => _time;
         }
@@ -36,7 +36,7 @@ namespace atmframework_swtgrp9
         //Bruges til at tjekke om en condition tidligere er forefundet.
         public bool EqualCondition(SeparationCondition otherCondition)
         {
-            if (string.EqualCondition(this.PairAirplanes.Item1.Tag, otherCondition.PairAirplanes.Item1.Tag) && string.EqualCondition(this.PairAirplanes.Item2.Tag, otherCondition.PairAirplanes.Item2.Tag))
+            if (string.Equals(this.PairAirplanes.Item1.Tag, otherCondition.PairAirplanes.Item1.Tag) && string.Equals(this.PairAirplanes.Item2.Tag, otherCondition.PairAirplanes.Item2.Tag))
             {
                 return true;
             }
