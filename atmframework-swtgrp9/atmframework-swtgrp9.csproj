@@ -60,13 +60,10 @@
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Interfaces\ITime.cs" />
-    <Compile Include="Interfaces\ITransponderReceiver.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeparationCondition.cs" />
-    <Compile Include="TransponderReceiver.cs" />
-    <Compile Include="TransponderReceiverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
