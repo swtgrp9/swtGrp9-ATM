@@ -30,7 +30,67 @@ namespace atmframework_swtgrp9
             _generator = generator;
         }
 
-        public  void OnEvent
+        public void OnEvent(List<string> flightData)
+        {
+            foreach (var f in flightData)
+            {
+                var plane = _generator.Generate(f);
+
+                AcceptAirplane(plane);
+
+                _condition.Detect(_airspace.GetAirplanes());
+            }
+
+            //i guess ting skal printes ud her
+        }
+
+        private void AcceptAirplane(IAirplaneInfo airplane)
+        {
+            int Xmin = _airspace.GetX1();
+            int Xmax = _airspace.GetX2();
+            int Ymin = _airspace.GetY1();
+            int Ymax = _airspace.GetY2();
+            int Zmin = _airspace.GetAlt1();
+            int Zmax = _airspace.GetAlt2();
+
+            if (airplane.X < Xmin || airplane.X > Xmax ||
+                airplane.Y < Ymin || airplane.Y > Ymax ||
+                airplane.Altitude < Zmin || airplane.Altitude > Zmax)
+            {
+                _airspace.Remove(airplane);
+            }
+            else
+            {
+                _airspace.Add(airplane);
+            }
+        }
+
+        private void PrintAirspace()
+        {
+            var planes = _airspace.GetAirplanes();
+            var logMessages = new List<string>();
+
+            foreach (var airplane in planes)
+            {
+                logMessages.Add(airplane.ToString());
+            }
+            _consoleLog.Logs(LOGTYPE.AIRSPACE, logMessages);
+        }
+
+        private void PrintCollisions()
+        {
+            var conditions = _condition.GetConditions();
+            var logMessages = new List<string>();
+
+            foreach (var condition in conditions)
+            {
+                var logmsg =
+                    $"{condition.Time:dd/mm/yyyy hh:mm:ss} {condition.Pair.Item1.Tag} {condition.Pair.Item2.Tag}";
+                logMessages.Add(logmsg);
+            }
+
+            _consoleLog.Logs(LOGTYPE.COLLISIONS, logMessages);
+        }
 
     }
 }

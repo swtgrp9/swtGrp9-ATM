@@ -8,7 +8,7 @@ namespace atmframework_swtgrp9
     public class SeparationCondition : ITime
     {
         private DateTime _time;
-        private Tuple<IAirplaneinfo, IAirplaneinfo> _pairAirplanes;
+        private Tuple<IAirplaneInfo, IAirplaneInfo> _pairAirplanes;
         private bool _isLogged;
 
         public Datetime Time
@@ -16,7 +16,7 @@ namespace atmframework_swtgrp9
             get => _time;
         }
 
-        public Tuple<IAirplaneinfo, IAirplaneinfo> PairAirplanes
+        public Tuple<IAirplaneInfo, IAirplaneInfo> PairAirplanes
         {
             get => _pairAirplanes;
         }
@@ -27,7 +27,7 @@ namespace atmframework_swtgrp9
             set => _isLogged = value;
         }
 
-        public SeparationCondition(DateTime time, Tuple<IAirplaneinfo, IAirplaneinfo> pairAirplanes)
+        public SeparationCondition(DateTime time, Tuple<IAirplaneInfo, IAirplaneInfo> pairAirplanes)
         {
             _time = time;
             _pairAirplanes = pairAirplanes;
