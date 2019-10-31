@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ATM.Core.Interfaces;
+using ATM.C.Interfaces;
 
 namespace ATM.Core
 {

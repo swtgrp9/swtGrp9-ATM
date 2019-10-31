@@ -59,7 +59,6 @@
     <Compile Include="Interfaces\ICollisionDetector.cs" />
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Interfaces\IMapper.cs" />
-    <Compile Include="Interfaces\IRegisterCondition.cs" />
     <Compile Include="Interfaces\ITime.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Program.cs" />
