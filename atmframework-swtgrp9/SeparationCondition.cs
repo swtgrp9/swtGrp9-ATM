@@ -11,7 +11,7 @@ namespace atmframework_swtgrp9
         private Tuple<IAirplaneInfo, IAirplaneInfo> _pairAirplanes;
         private bool _isLogged;
 
-        public Datetime Time
+        public DateTime Time
         {
             get => _time;
         }

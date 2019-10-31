@@ -10,8 +10,8 @@ namespace atmframework_swtgrp9
         private ILog _log;
         private List<SeparationCondition> _conditionList;
 
-        const int VerticalMax = 300;
-        const int HorizontalMax = 5000;
+        private const int VerticalMax = 300;
+        private const int HorizontalMax = 5000;
 
         public CollisionDetector(ILog log)
         {
