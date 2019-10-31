@@ -18,7 +18,7 @@ namespace atmframework_swtgrp9
         {
         }
 
-        public void Log(LOGTYPE type, List<string> logMessages)
+        public void Logs(LOGTYPE type, List<string> logMessages)
         {
             switch(type)
             {
@@ -29,11 +29,6 @@ namespace atmframework_swtgrp9
 
                 case LOGTYPE.COLLISIONS:
                     PrintCollisions(logMessages);
-
-                    break;
-
-                case LOGTYPE.CLEAR:
-                    Clear();
 
                     break;
 
