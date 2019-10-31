@@ -26,7 +26,7 @@ namespace atmframework_swtgrp9
             Xcoordinates = int.Parse(dataArray[1]);
             Ycoordinates = int.Parse(dataArray[2]);
             Altitude = int.Parse(dataArray[3]);
-            Time = DateTime.ParseExact(dataArray[4], "yyyymmddhhmmssfff", CultureInfo.InvariantCulture);
+            Time = DateTime.ParseExact(dataArray[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
         }
 
         //public void SetTag(string tag)

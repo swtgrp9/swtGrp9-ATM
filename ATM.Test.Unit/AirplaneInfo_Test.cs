@@ -21,7 +21,7 @@ namespace ATM.Test.Unit
             private static int testInteger = 100;
             private static double testDouble = 100.0;
             private static string testString = "testString";
-            private static DateTime testTime = new DateTime(2019, 31, 10);
+            private static DateTime testTime = new DateTime(2019, 10, 31);
 
 
 
@@ -44,11 +44,19 @@ namespace ATM.Test.Unit
 
                     yield return new TestCaseData(new AirplaneInfo().Velocity = testDouble, 100.0).SetName("Plane Velocity");
 
-                    yield return new TestCaseData(new AirplaneInfo().TimeStamp = testTime, new DateTime(2019, 31, 10)).SetName("Plane Time");
+                    yield return new TestCaseData(new AirplaneInfo().TimeStamp = testTime, new DateTime(2019, 10, 31)).SetName("Plane Time");
 
 
                 }
             }
+        }
+
+        //Assert
+        [TestCaseSource(typeof(ClassTestData), "TestProperties")]
+
+        public void AirplaneProperties<T>(T property, T testResult)
+        {
+            Assert.That(property, Is.EqualTo(testResult));
         }
     }
 }
