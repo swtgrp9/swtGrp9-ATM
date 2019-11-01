@@ -53,9 +53,9 @@ namespace atmframework_swtgrp9
             int Zmin = _airspace.GetAlt1();
             int Zmax = _airspace.GetAlt2();
 
-            if (airplane.X < Xmin || airplane.X > Xmax ||
-                airplane.Y < Ymin || airplane.Y > Ymax ||
-                airplane.Altitude < Zmin || airplane.Altitude > Zmax)
+            if ((airplane.X < Xmin) || (airplane.X > Xmax) ||
+                (airplane.Y < Ymin) || (airplane.Y > Ymax) ||
+                (airplane.Altitude < Zmin) || (airplane.Altitude > Zmax))
             {
                 _airspace.Remove(airplane);
             }

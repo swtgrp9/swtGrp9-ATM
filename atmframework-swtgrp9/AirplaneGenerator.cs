@@ -15,7 +15,7 @@ namespace atmframework_swtgrp9
         }
 
         
-        public double CalcVelocity(IAirplaneInfo current, IAirplaneInfo previous)
+        public double CalcVelocity(IAirplaneInfo previous, IAirplaneInfo current)
         {
             var distance = Math.Sqrt(Math.Pow(current.X - previous.X, 2) + Math.Pow(current.Y - previous.Y, 2));
             var timeDifference = (current.TimeStamp - previous.TimeStamp).TotalSeconds;
@@ -23,7 +23,7 @@ namespace atmframework_swtgrp9
             return totalVelocity;
         }
 
-        public double CalcCourse(IAirplaneInfo current, IAirplaneInfo previous)
+        public double CalcCourse(IAirplaneInfo previous, IAirplaneInfo current)
         {
             var Theta = Math.Atan2(previous.Y - current.Y, previous.X - current.X);
             Theta += Math.PI / 2;
@@ -52,12 +52,13 @@ namespace atmframework_swtgrp9
             {
                 var returningPlane = PlanesDictionary[d.AirplaneTag];
 
+                returningPlane.Velocity = CalcVelocity(returningPlane, airplane);
+                returningPlane.Course = CalcCourse(returningPlane, airplane);
                 returningPlane.X = airplane.X;
                 returningPlane.Y = airplane.Y;
                 returningPlane.Altitude = airplane.Altitude;
                 returningPlane.TimeStamp = airplane.TimeStamp;
-                returningPlane.Velocity = CalcVelocity(returningPlane, airplane);
-                returningPlane.Course = CalcCourse(returningPlane, airplane);
+                
                
                 
                 
