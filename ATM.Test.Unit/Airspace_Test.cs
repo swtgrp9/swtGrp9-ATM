@@ -170,5 +170,13 @@ namespace ATM.Test.Unit
             Assert.That(AltitudeMax, Is.EqualTo(20000));
         }
 
+        [Test]
+        public void GetAltitudeMin_Returns500()
+        {
+            int AltitudeMin = uut.GetAlt1();
+
+            Assert.That(AltitudeMin, Is.EqualTo(500));
+        }
+
     }
 }
