@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace atmframework_swtgrp9
 {
-    public class Mapper : IMapper
+    public class Decoder : IDecoder
     {
         public string AirplaneTag { get; private set; }
 
@@ -18,7 +18,7 @@ namespace atmframework_swtgrp9
 
         public DateTime Time { get; private set; }
 
-        public Mapper(string Data)
+        public Decoder(string Data)
         {
             var dataArray = Data.Split(';');
             if (dataArray.Length != 5 ) { throw new Exception(); }
