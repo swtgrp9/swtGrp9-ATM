@@ -19,7 +19,7 @@ namespace atmframework_swtgrp9.Interfaces
 
         void Remove(T construct);
 
-        System.Collections.Generic.List<T> GetAirplanes();
+        List<T> GetAirplanes();
 
     }
 }
