@@ -51,5 +51,21 @@ namespace ATM.Test.Unit
 
             Assert.That(listOfAirplanes[1].Tag, Is.EqualTo("Testplane2"));
         }
+
+        [Test]
+        public void AddAirplaneAlreadynAirspace_OneAirplaneAlreadyInAirspace()
+        {
+            IAirplaneInfo testPlane1 = Substitute.For<IAirplaneInfo>();
+            testPlane1.Tag.Returns("Testplane1");
+            uut.Add(testPlane1);
+
+            IAirplaneInfo testPlane2 = Substitute.For<IAirplaneInfo>();
+            testPlane2.Tag.Returns("Testplane2");
+            uut.Add(testPlane2);
+
+            
+
+        }
+
     }
 }
