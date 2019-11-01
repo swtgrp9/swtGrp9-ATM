@@ -74,7 +74,7 @@
     <Compile Include="CollisionDetector_Test.cs" />
     <Compile Include="ConsoleLogger_Test.cs" />
     <Compile Include="FileLogger_Test.cs" />
-    <Compile Include="Mapper_Test.cs" />
+    <Compile Include="Decoder_Test.cs" />
     <Compile Include="SeparationCondition_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
