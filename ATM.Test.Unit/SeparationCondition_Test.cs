@@ -38,5 +38,26 @@ namespace ATM.Test.Unit
 
             Assert.That((_testSeparationCondition.PairAirplanes) , Is.EqualTo(uut));
         }
+
+        [Test]
+        public void IsLoggedTest_True()
+        {
+            _testSeparationCondition.IsLogged = true;
+            Assert.That(_testSeparationCondition.IsLogged, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void IsLoggedTest_False()
+        {
+            _testSeparationCondition.IsLogged = false;
+            Assert.That(_testSeparationCondition.IsLogged, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void IsLoggedTest_OppositeBool()
+        {
+            _testSeparationCondition.IsLogged = true;
+            Assert.That(_testSeparationCondition.IsLogged, Is.Not.EqualTo(false));
+        }
     }
 }
