@@ -153,6 +153,14 @@ namespace ATM.Test.Unit
             Assert.That(Ymax, Is.EqualTo(90000));
         }
 
+        [Test]
+        public void GetYMin_Returns10000()
+        {
+            int Ymin = uut.GetY1();
+
+            Assert.That(Ymin, Is.EqualTo(10000));
+
+        }
 
     }
 }
