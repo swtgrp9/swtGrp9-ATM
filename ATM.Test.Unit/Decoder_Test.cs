@@ -40,5 +40,12 @@ namespace ATM.Test.Unit
                 }
             }
         }
+
+        //Assert
+        [TestCaseSource(typeof(TestClass), "CorrectCases")]
+        public void DecodingCorrectly<T>(T property, T decodeResult)
+        {
+            Assert.That(property, Is.EqualTo(decodeResult));
+        }
     }
 }
