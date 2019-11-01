@@ -26,7 +26,8 @@ namespace ATM.Test.Unit
         [SetUp]
         public void Setup()
         {
-            _log = Substitute.For<ILog>();
+
+            _log = Substitute.For<FileLogger, ILog>("test");
 
             _uut = new CollisionDetector(_log);
 
