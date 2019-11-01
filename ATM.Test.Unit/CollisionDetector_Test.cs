@@ -36,7 +36,38 @@ namespace ATM.Test.Unit
             _testAirspace.Add(_testAirplaneInfo1);
             _testAirspace.Add(_testAirplaneInfo2);
 
-
         }
+
+        [Test]
+        public void RegisterAirplanesCollidingXY()
+        {
+            _testAirplaneInfo1.X.Returns(35000);
+            _testAirplaneInfo1.Y.Returns(35000);
+            _testAirplaneInfo1.Altitude.Returns(600);
+
+            _testAirplaneInfo2.X.Returns(35000);
+            _testAirplaneInfo2.Y.Returns(35000);
+            _testAirplaneInfo2.Altitude.Returns(1100);
+
+            _uut.Register(_testAirspace);
+
+            Assert.That(_uut.GetConditions().Count, Is.EqualTo(1));
+        }
+
+        //[Test]
+        //public void RegisterAirplanesNotColliding()
+        //{
+        //    _testAirplaneInfo1.X.Returns(35000);
+        //    _testAirplaneInfo1.Y.Returns(50000);
+        //    _testAirplaneInfo1.Altitude.Returns(600);
+
+        //    _testAirplaneInfo2.X.Returns(50000);
+        //    _testAirplaneInfo2.Y.Returns(80000);
+        //    _testAirplaneInfo2.Altitude.Returns(1100);
+
+        //    _uut.Register(_testAirspace);
+
+        //    Assert.That(_uut.GetConditions().Count, Is.EqualTo(0));
+        //}
     }
 }

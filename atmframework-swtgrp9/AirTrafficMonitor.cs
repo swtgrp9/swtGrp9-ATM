@@ -9,7 +9,7 @@ namespace atmframework_swtgrp9
     public class AirTrafficMonitor
     {
         private ICollisionDetector _collision;
-        private IAirspace<IAirplaneInfo> _airspace;
+        private IAirspace _airspace;
         private IAirplaneGenerator _generator;
         private ILog _consoleLog;
         private ILog _fileLog;
@@ -18,7 +18,7 @@ namespace atmframework_swtgrp9
             ILog fileLog,
             ILog consoleLog,
             ICollisionDetector register,
-            IAirspace<IAirplaneInfo> airspace,
+            IAirspace airspace,
             IAirplaneGenerator generator
         )
 
