@@ -105,6 +105,7 @@ namespace ATM.Test.Unit
             Assert.That(() => listOfAirplanes[0].Tag, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
+        //Test for om der kan returneres et tilføjet fly i Airspacet
         [Test]
         public void GetAirplanesFromAirspace_ReturnsListOfPlanes_AirplanesInAirspace()
         {
@@ -116,5 +117,17 @@ namespace ATM.Test.Unit
 
             Assert.That(listOfAirplanes[0].Tag, Is.EqualTo("Testplane1"));
         }
+
+        //Test for forsøg på at hente fly fra et tomt airspace
+        [Test]
+        public void GetAirplanesFromAirspace_EmptyAirspace()
+        {
+
+            List<IAirplaneInfo> listOfAirplanes = uut.GetAirplanes();
+            
+            Assert.That(() => listOfAirplanes[0].Tag, Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+
     }
 }
