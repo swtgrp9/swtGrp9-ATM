@@ -42,10 +42,23 @@ namespace ATM.Test.Unit
         }
 
         //Assert
+        //Test for om den kan decode en given besked
+
         [TestCaseSource(typeof(TestClass), "CorrectCases")]
         public void DecodingCorrectly<T>(T property, T decodeResult)
         {
             Assert.That(property, Is.EqualTo(decodeResult));
+        }
+
+        //Test for forkert decoding -> smider exception
+        [Test]
+        public void DecodingWrong()
+        {
+            //Arrange
+            string exampleTestString2 = "123;number;number;number;2019-11-01-22-45-42-400";
+
+            //Act & Assert
+            Assert.That(() => new Decoder(exampleTestString2), Throws.TypeOf<FormatException>());
         }
     }
 }
