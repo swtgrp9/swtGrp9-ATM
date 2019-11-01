@@ -9,6 +9,7 @@ using atmframework_swtgrp9.Interfaces;
 using TransponderReceiver;
 using NSubstitute;
 using NUnit.Framework;
+using Decoder = System.Text.Decoder;
 
 namespace ATM.Test.Unit
 {
@@ -23,6 +24,10 @@ namespace ATM.Test.Unit
         private ILog _fFileLogger;
         private ITransponderReceiver _fTransponderReceiver;
 
+        private List<Decoder> _fDecoder;
+        private RawTransponderDataEventArgs _fEventArgs;
+        private Dictionary<string, AirplaneInfo> _faAirplaneInfo; //Skulle gerne kategorisere informationen i alfabetisk rækkefølge
+
 
         //Unit under test
         private AirTrafficMonitor _uut;
@@ -30,15 +35,31 @@ namespace ATM.Test.Unit
         [SetUp]
         public void Setup()
         {
-            //subs
-            _fAirspace = Substitute.For<Airspace>();
-            _fGenerator = Substitute.For<AirplaneGenerator>();
-            _fDetector = Substitute.For<CollisionDetector>();
-            _fConsoleLogger = Substitute.For<ConsoleLogger>();
-            _fFileLogger = Substitute.For<FileLogger>();
+            // Arrange
+            // (subs)
+            _fAirspace = Substitute.For<IAirspace<IAirplaneInfo>>();
+            _fGenerator = Substitute.For<IAirplaneGenerator>();
+            _fDetector = Substitute.For<ICollisionDetector>();
+            _fConsoleLogger = Substitute.For<ILog>();
+            _fFileLogger = Substitute.For<ILog>();
             _fTransponderReceiver = Substitute.For<ITransponderReceiver>();
 
+            _uut = new AirTrafficMonitor(
+                _fFileLogger,
+                _fConsoleLogger,
+                _fDetector,
+                _fAirspace,
+                _fGenerator);
 
+        }
+
+        [Test]
+        public void AddAirplanes()
+        {
+            List<string> testData = new List<string>
+            {
+
+            }
         }
 
     }
