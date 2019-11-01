@@ -128,6 +128,13 @@ namespace ATM.Test.Unit
             Assert.That(() => listOfAirplanes[0].Tag, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
+        [Test]
+        public void GetXMax_Returns90000()
+        {
+            int Xmax = uut.GetX2();
+
+            Assert.That(Xmax, Is.EqualTo(90000));
+        }
 
     }
 }
