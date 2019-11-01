@@ -19,24 +19,21 @@ namespace atmframework_swtgrp9
         public int Y{ get; set; }
 
         public double Altitude { get; set; }
-
+        public double Course { get => course; set => course = value % 360; }
         public double Velocity { get; set; }
 
         public DateTime TimeStamp { get; set; }
         
-        public double Course { get => course; set => course = value % 360; }
-
+        
         public override string ToString()
         {
             return Tag + " " +
                    X + " " +
                    Y + " " +
                    Altitude + " " +
-                   Math.Round(Velocity, 1) + " m/s" +
-                   Math.Round(Course, 1) + " degrees" +
-                   TimeStamp.ToShortTimeString();
-            
-            // TimeStamp.ToString("dd/MM/yyyy HH:mm:ss")
+                   Math.Round(Velocity, 1) + " m/s " +
+                   Math.Round(Course, 1) + "d " +
+                   TimeStamp.ToString("dd/MM/yyyy HH:mm:ss");
         }
     }
 }
