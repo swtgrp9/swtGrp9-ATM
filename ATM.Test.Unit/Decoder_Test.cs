@@ -60,5 +60,15 @@ namespace ATM.Test.Unit
             //Act & Assert
             Assert.That(() => new Decoder(exampleTestString2), Throws.TypeOf<FormatException>());
         }
+
+        [Test]
+        public void WrongFormatOfDataString()
+        {
+            //Arrange
+            string exampleTestString3 = "; ; ; ;";
+
+            //Act & Assert
+            Assert.That(() => new Decoder(exampleTestString3), Throws.TypeOf<FormatException>());
+        }
     }
 }
