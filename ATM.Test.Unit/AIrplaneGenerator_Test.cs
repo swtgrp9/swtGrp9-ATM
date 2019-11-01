@@ -28,7 +28,7 @@ namespace ATM.Test.Unit
             _fakeTestPlane1 = new AirplaneInfo();
             _fakeTestPlane2 = new AirplaneInfo();
             _fakeData1 = "SAS123;89855;43075;1100;20191101120513900";
-            _fakeData2 = "SAS123;64059;93446;17800;20191101120515273";
+            _fakeData2 = "SAS123;89858;43079;1100;20191101120514900";
         }
 
         //Test for om der kan genereres data for et fly
@@ -64,12 +64,12 @@ namespace ATM.Test.Unit
             
 
             _fakeTestPlane2.Tag = "SAS123";
-            _fakeTestPlane2.X = 64059;
-            _fakeTestPlane2.Y = 93446;
-            _fakeTestPlane2.Altitude = 17800;
-            _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101120515273", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
-            _fakeTestPlane2.Velocity = 32.1;
-            _fakeTestPlane2.Course = 321.4;
+            _fakeTestPlane2.X = 89858;
+            _fakeTestPlane2.Y = 43079;
+            _fakeTestPlane2.Altitude = 1100;
+            _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101120514900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+            //_fakeTestPlane2.Velocity = 5;
+            //_fakeTestPlane2.Course = 321.4;
             
 
             //Act
