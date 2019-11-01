@@ -5,7 +5,7 @@ using atmframework_swtgrp9.Interfaces;
 
 namespace atmframework_swtgrp9
 {
-    class CollisionDetector : ICollisionDetector
+     public class CollisionDetector : ICollisionDetector
     {
         private ILog _log;
         private List<SeparationCondition> _conditionList;
