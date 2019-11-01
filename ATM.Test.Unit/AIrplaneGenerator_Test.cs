@@ -40,7 +40,11 @@ namespace ATM.Test.Unit
             _fakeTestPlane1.Altitude = 1100;
             _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101120513900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
 
-            
+            //Act
+            var airplane = _uut.Generate(_fakeData1);
+
+            //Assert
+            Assert.That(airplane.ToString(), Is.EqualTo(_fakeTestPlane1.ToString()));
         }
     }
 }
