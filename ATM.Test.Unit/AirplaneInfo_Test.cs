@@ -46,7 +46,7 @@ namespace ATM.Test.Unit
 
                     yield return new TestCaseData(new AirplaneInfo().TimeStamp = testTime, new DateTime(2019, 10, 31)).SetName("Plane Time");
 
-
+                    yield return new TestCaseData(testAirplane.ToString(), testAirplane.ToString()).SetName("ToString()");
                 }
             }
         }
