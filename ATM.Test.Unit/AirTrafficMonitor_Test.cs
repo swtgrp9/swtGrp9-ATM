@@ -71,8 +71,9 @@ namespace ATM.Test.Unit
             Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(2));
         }
 
-        [TestCase("100000",0, TestName = "Invalid airplane")]
-        public  void invalidPlane(string Zaxis, int result)
+        [TestCase("100000",0, TestName = "valid airplane")]
+        [TestCase("1000000", 0, TestName = "Invalid airplane")]
+        public  void validorinvalidPlane(string Zaxis, int result)
         {
             IAirspace aSpace = new Airspace();
             List<string> testData = new List<string>()
