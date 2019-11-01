@@ -70,8 +70,17 @@ namespace ATM.Test.Unit
 
 
         [Test]
-        public void IsEqualTest()
+        public void IsEqualTestFalse() //Tester om fly med forskellge tags i hver sin condition ikke er lig hinanden (altså false) 
         {
+            IAirplaneInfo airplane1 = Substitute.For<IAirplaneInfo>();
+            IAirplaneInfo airplane2 = Substitute.For<IAirplaneInfo>();
+
+            airplane1.Tag.Returns("Found");
+            _testAirplaneInfo1.Tag.Returns("Not found");
+
+            SeparationCondition isEqualTestFalseCondition = new SeparationCondition(new DateTime(2019), new Tuple<IAirplaneInfo, IAirplaneInfo>(airplane1, airplane2));
+
+            Assert.That((_testSeparationCondition.EqualCondition(isEqualTestFalseCondition)), Is.EqualTo(false));
 
         }
     }
