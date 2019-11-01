@@ -71,5 +71,20 @@ namespace ATM.Test.Unit
             Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(2));
         }
 
+        [TestCase("100000",0, TestName = "Invalid airplane")]
+        public  void invalidPlane(string Zaxis, int result)
+        {
+            IAirspace aSpace = new Airspace();
+            List<string> testData = new List<string>()
+            {
+                $"SAS123;89855;43075;{Zaxis};20191101120513900"
+            };
+            _uut.OnEvent(testData);
+
+            Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(result));
+        }
+
+            
+
     }
 }

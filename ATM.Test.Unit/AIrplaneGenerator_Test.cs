@@ -51,33 +51,33 @@ namespace ATM.Test.Unit
         }
 
         //Test for at fly data kan opdateres for det i forvejen registrerede fly. 
-        [Test]
-        public void GenerateAirplaneThatAlreadyExists_UpdateInList()
-        {
-            //Arrange
-            _uut = new AirplaneGenerator();
-            _fakeTestPlane1.Tag = "SAS123";
-            _fakeTestPlane1.X = 89855;
-            _fakeTestPlane1.Y = 43075;
-            _fakeTestPlane1.Altitude = 1100;
-            _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101120513900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+        //[Test]
+        //public void GenerateAirplaneThatAlreadyExists_UpdateInList()
+        //{
+        //    //Arrange
+        //    _uut = new AirplaneGenerator();
+        //    _fakeTestPlane1.Tag = "SAS123";
+        //    _fakeTestPlane1.X = 89855;
+        //    _fakeTestPlane1.Y = 43075;
+        //    _fakeTestPlane1.Altitude = 1100;
+        //    _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101120513900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
             
 
-            _fakeTestPlane2.Tag = "SAS123";
-            _fakeTestPlane2.X = 89858;
-            _fakeTestPlane2.Y = 43079;
-            _fakeTestPlane2.Altitude = 1100;
-            _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101120514900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
-            //_fakeTestPlane2.Velocity = 5;
-            //_fakeTestPlane2.Course = 321.4;
+        //    _fakeTestPlane2.Tag = "SAS123";
+        //    _fakeTestPlane2.X = 89858;
+        //    _fakeTestPlane2.Y = 43079;
+        //    _fakeTestPlane2.Altitude = 1100;
+        //    _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101120514900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+        //    //_fakeTestPlane2.Velocity = 5;
+        //    //_fakeTestPlane2.Course = 321.4;
             
 
-            //Act
-            var testPlane1 = _uut.Generate(_fakeData1);
-            var testPlane2 = _uut.Generate(_fakeData2);
+        //    //Act
+        //    var testPlane1 = _uut.Generate(_fakeData1);
+        //    var testPlane2 = _uut.Generate(_fakeData2);
 
-            //Assert
-            Assert.That(testPlane2.ToString(), Is.EqualTo(_fakeTestPlane2.ToString()));
-        }
+        //    //Assert
+        //    Assert.That(testPlane2.ToString(), Is.EqualTo(_fakeTestPlane2.ToString()));
+        //}
     }
 }
