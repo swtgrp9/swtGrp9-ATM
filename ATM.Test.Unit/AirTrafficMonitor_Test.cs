@@ -71,15 +71,17 @@ namespace ATM.Test.Unit
             Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(2));
         }
 
-        [TestCase("100000",0, TestName = "valid airplane")]
+        [TestCase("80000", 0, TestName = "valid airplane")]
         [TestCase("1000000", 0, TestName = "Invalid airplane")]
-        public  void validorinvalidPlane(string Zaxis, int result)
+        public  void Validate(string Valid, int result)
         {
             IAirspace aSpace = new Airspace();
+
             List<string> testData = new List<string>()
             {
-                $"SAS123;89855;43075;{Zaxis};20191101120513900"
+                $"SAS123;{Valid};13000;1100;20191101120513900",
             };
+
             _uut.OnEvent(testData);
 
             Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(result));
