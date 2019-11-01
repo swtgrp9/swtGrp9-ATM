@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 using atmframework_swtgrp9;
+using atmframework_swtgrp9.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
+
 
 namespace ATM.Test.Unit
 {
@@ -25,8 +27,8 @@ namespace ATM.Test.Unit
         {
             _fakeTestPlane1 = new AirplaneInfo();
             _fakeTestPlane2 = new AirplaneInfo();
-            _fakeData1 = "SAS123;89855;43075;1100;20191101120513900";
-            _fakeData2 = "SAS321;64059;93446;17800;20191101120515273";
+            _fakeData1 = "SAS123;95000;31289;6500;20191101172101543";
+            _fakeData2 = "SAS123;94846;31169;6500;20191101172102226";
         }
 
         //Test for om der kan genereres data for et fly
@@ -36,10 +38,10 @@ namespace ATM.Test.Unit
             //Arrange
             _uut = new AirplaneGenerator();
             _fakeTestPlane1.Tag = "SAS123";
-            _fakeTestPlane1.X = 89855;
-            _fakeTestPlane1.Y = 43075;
-            _fakeTestPlane1.Altitude = 1100;
-            _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101120513900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+            _fakeTestPlane1.X = 95000;
+            _fakeTestPlane1.Y = 31289;
+            _fakeTestPlane1.Altitude = 6500;
+            _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101172101543", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
 
             //Act
             var airplane = _uut.Generate(_fakeData1);
@@ -54,18 +56,23 @@ namespace ATM.Test.Unit
         {
             //Arrange
             _uut = new AirplaneGenerator();
+           
             _fakeTestPlane1.Tag = "SAS123";
-            _fakeTestPlane1.X = 89855;
-            _fakeTestPlane1.Y = 43075;
-            _fakeTestPlane1.Altitude = 1100;
-            _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101120513900", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+            _fakeTestPlane1.X = 95000;
+            _fakeTestPlane1.Y = 31289;
+            _fakeTestPlane1.Altitude = 6500;
+            _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101172101543", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
 
             
-            _fakeTestPlane2.Tag = "SAS321";
-            _fakeTestPlane2.X = 64059;
-            _fakeTestPlane2.Y = 93446;
-            _fakeTestPlane2.Altitude = 17800;
-            _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101120515273", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+            _fakeTestPlane2.Tag = "SAS123";
+            _fakeTestPlane2.X = 94846;
+            _fakeTestPlane2.Y = 31169;
+            _fakeTestPlane2.Altitude = 6500;
+            _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101172102226", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+            _fakeTestPlane2.Course = 127.9;
+            _fakeTestPlane2.Velocity = 285.8;
+           
+            
 
             //Act
             var testPlane1 = _uut.Generate(_fakeData1);
