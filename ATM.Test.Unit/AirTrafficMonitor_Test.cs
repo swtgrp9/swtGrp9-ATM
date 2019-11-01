@@ -9,6 +9,7 @@ using atmframework_swtgrp9.Interfaces;
 using TransponderReceiver;
 using NSubstitute;
 using NUnit.Framework;
+using static NUnit.Framework.Assert;
 using Decoder = System.Text.Decoder;
 
 namespace ATM.Test.Unit
@@ -53,14 +54,7 @@ namespace ATM.Test.Unit
 
         }
 
-        [Test]
-        public void AddAirplanes()
-        {
-            List<string> testData = new List<string>
-            {
 
-            }
-        }
 
     }
 }
