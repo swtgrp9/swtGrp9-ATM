@@ -56,14 +56,17 @@ namespace ATM.Test.Unit
         public void AddAirplaneAlreadynAirspace_OneAirplaneAlreadyInAirspace()
         {
             IAirplaneInfo testPlane1 = Substitute.For<IAirplaneInfo>();
-            testPlane1.Tag.Returns("Testplane1");
+            testPlane1.Tag.Returns("Testplane");
             uut.Add(testPlane1);
 
             IAirplaneInfo testPlane2 = Substitute.For<IAirplaneInfo>();
-            testPlane2.Tag.Returns("Testplane2");
+            testPlane2.Tag.Returns("Testplane");
             uut.Add(testPlane2);
 
-            
+            List<IAirplaneInfo> listOfAirplanes = uut.GetAirplanes();
+
+
+            Assert.That(() => listOfAirplanes[1].Tag, Throws.TypeOf<ArgumentOutOfRangeException>());
 
         }
 
