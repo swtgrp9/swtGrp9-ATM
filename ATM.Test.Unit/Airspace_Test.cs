@@ -22,6 +22,7 @@ namespace ATM.Test.Unit
             uut = new Airspace();
         }
 
+        //Test for om der kan tilføjes fly i airspacet. 
         [Test]
         public void AddAirplaneToEmptyAirspace_AddedCorrectPlane()
         {
@@ -34,6 +35,7 @@ namespace ATM.Test.Unit
             Assert.That(listOfAirplanes[0].Tag, Is.EqualTo("Test1"));
         }
         
+        //Test for om der kan tilføjes mere end et fly
         [Test]
         public void AddAirplaneToAirspaceWithOnePlane_AddedCorrectPlane()
         {
@@ -52,6 +54,7 @@ namespace ATM.Test.Unit
             Assert.That(listOfAirplanes[1].Tag, Is.EqualTo("Testplane2"));
         }
 
+        //Test for om der kan tilføjes fly i airspacet når det allerede findes i airspacet. 
         [Test]
         public void AddAirplaneAlreadyInAirspace_OneAirplaneAlreadyInAirspace()
         {
@@ -70,6 +73,7 @@ namespace ATM.Test.Unit
 
         }
 
+        //Test for om der stadig kan findes tideligere tilføjet fly i listen af fly.
         [Test]
         public void AddAirplaneAlreadyInAirspace_PlaneStillExistInList()
         {
@@ -84,6 +88,21 @@ namespace ATM.Test.Unit
             List<IAirplaneInfo> listOfAirplanes = uut.GetAirplanes();
 
             Assert.That(listOfAirplanes[0].Tag, Is.EqualTo("Testplane"));
+        }
+
+        //Test for om der kan fjernes et fly fra Airspacet.
+        [Test]
+        public void RemoveAirplaneFromAirspace_OnePlaneInAirspace()
+        {
+            IAirplaneInfo testplane1 = Substitute.For<IAirplaneInfo>();
+            testplane1.Tag.Returns("Testplane1");
+            uut.Add(testplane1);
+
+            uut.Remove(testplane1);
+
+            List<IAirplaneInfo> listOfAirplanes = uut.GetAirplanes();
+
+            Assert.That(() => listOfAirplanes[0].Tag, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
     }
