@@ -6,7 +6,7 @@ using atmframework_swtgrp9.Interfaces;
 
 namespace atmframework_swtgrp9
 {
-    class AirTrafficMonitor
+    public class AirTrafficMonitor
     {
         private CollisionDetector _condition;
         private IAirspace<IAirplaneInfo> _airspace;
@@ -22,6 +22,7 @@ namespace atmframework_swtgrp9
             IAirspace<IAirplaneInfo> airspace,
             IAirplaneGenerator generator
         )
+
         {
             _fileLog = fileLog;
             _consoleLog = consoleLog;
