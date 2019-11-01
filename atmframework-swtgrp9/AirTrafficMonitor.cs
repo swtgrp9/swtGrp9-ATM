@@ -8,17 +8,16 @@ namespace atmframework_swtgrp9
 {
     public class AirTrafficMonitor
     {
-        private CollisionDetector _condition;
+        private ICollisionDetector _collision;
         private IAirspace<IAirplaneInfo> _airspace;
         private IAirplaneGenerator _generator;
         private ILog _consoleLog;
         private ILog _fileLog;
 
-        public AirTrafficMonitor
-        (
-            FileLogger fileLog,
-            ConsoleLogger consoleLog,
-            CollisionDetector register,
+        public AirTrafficMonitor(
+            ILog fileLog,
+            ILog consoleLog,
+            ICollisionDetector register,
             IAirspace<IAirplaneInfo> airspace,
             IAirplaneGenerator generator
         )
@@ -26,7 +25,7 @@ namespace atmframework_swtgrp9
         {
             _fileLog = fileLog;
             _consoleLog = consoleLog;
-            _condition = register;
+            _collision = register;
             _airspace = airspace;
             _generator = generator;
         }
@@ -39,7 +38,7 @@ namespace atmframework_swtgrp9
 
                 AcceptAirplane(plane);
 
-                _condition.Register(_airspace.GetAirplanes());
+                _collision.Register(_airspace.GetAirplanes());
             }
 
             //i guess ting skal printes ud her
@@ -80,7 +79,7 @@ namespace atmframework_swtgrp9
 
         private void PrintCollisions()
         {
-            var conditions = _condition.GetConditions();
+            var conditions = _collision.GetConditions();
             var logMessages = new List<string>();
 
             foreach (var condition in conditions)

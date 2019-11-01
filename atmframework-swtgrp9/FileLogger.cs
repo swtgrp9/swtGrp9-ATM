@@ -8,11 +8,11 @@ namespace atmframework_swtgrp9
 {
     public class FileLogger : ILog
     {
-        private string logpath;
+        private string _logpath;
 
         public FileLogger(string path)
         {
-            logpath = path;
+            _logpath = path;
         }
 
         public void Logs(LOGTYPE type, List<string> logMessages)
@@ -20,7 +20,7 @@ namespace atmframework_swtgrp9
             //Kun collisions
             if (type != LOGTYPE.COLLISIONS) return;
 
-            StreamWriter sw = File.AppendText(logpath);
+            StreamWriter sw = File.AppendText(_logpath);
 
             for (int i = 0; i < logMessages.Count; i++)
             {
