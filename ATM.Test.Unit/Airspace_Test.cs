@@ -106,6 +106,15 @@ namespace ATM.Test.Unit
         }
 
         [Test]
-        public void GetAirplanesFromAirspace
+        public void GetAirplanesFromAirspace_ReturnsListOfPlanes_AirplanesInAirspace()
+        {
+            IAirplaneInfo testplane1 = Substitute.For<IAirplaneInfo>();
+            testplane1.Tag.Returns("Testplane1");
+            uut.Add(testplane1);
+
+            List<IAirplaneInfo> listOfAirplanes = uut.GetAirplanes();
+
+            Assert.That(listOfAirplanes[0].Tag, Is.EqualTo("Testplane1"));
+        }
     }
 }
