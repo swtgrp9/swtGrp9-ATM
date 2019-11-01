@@ -128,6 +128,7 @@ namespace ATM.Test.Unit
             Assert.That(() => listOfAirplanes[0].Tag, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
+        //Test for maksimale grænse for X-aksen
         [Test]
         public void GetXMax_Returns90000()
         {
@@ -136,14 +137,52 @@ namespace ATM.Test.Unit
             Assert.That(Xmax, Is.EqualTo(90000));
         }
 
+        //Test for minimale grænse for X-aksen
         [Test]
         public void GetXMin_Returns10000()
         {
             int Xmin = uut.GetX1();
 
             Assert.That(Xmin, Is.EqualTo(10000));
+
         }
 
+        //Test for maksimale grænse for Y-aksen
+        [Test]
+        public void GetYMax_Returns90000()
+        {
+            int Ymax = uut.GetY2();
+
+            Assert.That(Ymax, Is.EqualTo(90000));
+        }
+
+        //Test for minimale grænse for Y-aksen
+        [Test]
+        public void GetYMin_Returns10000()
+        {
+            int Ymin = uut.GetY1();
+
+            Assert.That(Ymin, Is.EqualTo(10000));
+
+        }
+
+        //Test for maksimale grænse for altituden
+        [Test]
+        public void GetAltitudeMax_Returns20000()
+        {
+            int AltitudeMax = uut.GetAlt2();
+
+            Assert.That(AltitudeMax, Is.EqualTo(20000));
+        }
+
+        //Test for minimale grænse for altituden
+        [Test]
+        public void GetAltitudeMin_Returns500()
+        {
+            int AltitudeMin = uut.GetAlt1();
+
+            Assert.That(AltitudeMin, Is.EqualTo(500));
+        }
 
     }
 }
