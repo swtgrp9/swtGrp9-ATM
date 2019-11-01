@@ -162,5 +162,13 @@ namespace ATM.Test.Unit
 
         }
 
+        [Test]
+        public void GetAltitudeMax_Returns20000()
+        {
+            int AltitudeMax = uut.GetAlt2();
+
+            Assert.That(AltitudeMax, Is.EqualTo(20000));
+        }
+
     }
 }
