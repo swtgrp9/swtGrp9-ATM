@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using atmframework_swtgrp9.Interfaces;
 
 namespace atmframework_swtgrp9
@@ -36,27 +37,30 @@ namespace atmframework_swtgrp9
 
         public IAirplaneInfo Generate(string Data)
         {
-            var m = new Decoder(Data);
+            var d = new Decoder(Data);
 
             IAirplaneInfo airplane = new AirplaneInfo
             {
-                Tag = m.AirplaneTag,
-                X = m.Xcoordinates,
-                Y = m.Ycoordinates,
-                Altitude = m.Altitude,
-                TimeStamp = m.Time,
+                Tag = d.AirplaneTag,
+                X = d.Xcoordinates,
+                Y = d.Ycoordinates,
+                Altitude = d.Altitude,
+                TimeStamp = d.Time,
             };
 
-            if(PlanesDictionary.ContainsKey(m.AirplaneTag))
+            if(PlanesDictionary.ContainsKey(d.AirplaneTag))
             {
-                var returningPlane = PlanesDictionary[m.AirplaneTag];
+                var returningPlane = PlanesDictionary[d.AirplaneTag];
 
                 returningPlane.X = airplane.X;
                 returningPlane.Y = airplane.Y;
-                returningPlane.Velocity = CalcVelocity(returningPlane, airplane);
                 returningPlane.Altitude = airplane.Altitude;
-                returningPlane.Course = CalcCourse(returningPlane, airplane);
                 returningPlane.TimeStamp = airplane.TimeStamp;
+                returningPlane.Velocity = CalcVelocity(returningPlane, airplane);
+                returningPlane.Course = CalcCourse(returningPlane, airplane);
+               
+                
+                
 
                 return returningPlane;
 
