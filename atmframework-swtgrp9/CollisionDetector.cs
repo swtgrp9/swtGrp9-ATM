@@ -63,16 +63,16 @@ namespace atmframework_swtgrp9
 
                     if (PlaneCollision(plane1, plane2)) //If collision imminent, check if already logged - if not then add it
                     {
-                        var alreadyLogged = false;
+                        tempCondition.IsLogged = false;
                         for (var k = 0; k < _conditionList.Count; k++)
                         {
                             if (tempCondition.EqualCondition(_conditionList[k]))
                             {
-                                alreadyLogged = true;
+                                tempCondition.IsLogged = true;
                             }
                         }
 
-                        if (alreadyLogged == false)
+                        if (tempCondition.IsLogged == false)
                         {
                             _log.Logs(LOGTYPE.COLLISIONS, new List<string>()
                             {
