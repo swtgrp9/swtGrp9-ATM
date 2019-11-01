@@ -33,7 +33,7 @@ namespace atmframework_swtgrp9
                     break;
 
                 case LOGTYPE.CLEAR:
-                    Console.Clear();
+                   // Console.Clear();
 
                     break;
 
