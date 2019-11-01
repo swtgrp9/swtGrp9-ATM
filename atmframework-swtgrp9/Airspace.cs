@@ -5,7 +5,7 @@ using atmframework_swtgrp9.Interfaces;
 
 namespace atmframework_swtgrp9
 {
-    public class Airspace : IAirspace<IAirplaneInfo>
+    public class Airspace : IAirspace
     {
         private readonly Dictionary<string, IAirplaneInfo> _airplanesInAirspace;
 

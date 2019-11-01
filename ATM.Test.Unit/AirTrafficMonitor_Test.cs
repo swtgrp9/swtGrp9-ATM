@@ -18,7 +18,7 @@ namespace ATM.Test.Unit
     class AirTrafficMonitor_Test
     {
         //Fakes
-        private IAirspace<IAirplaneInfo> _fAirspace;
+        private IAirspace _fAirspace;
         private IAirplaneGenerator _fGenerator;
         private ICollisionDetector _fDetector;
         private ILog _fConsoleLogger;
@@ -38,7 +38,7 @@ namespace ATM.Test.Unit
         {
             // Arrange
             // (subs)
-            _fAirspace = Substitute.For<IAirspace<IAirplaneInfo>>();
+            _fAirspace = Substitute.For<IAirspace>();
             _fGenerator = Substitute.For<IAirplaneGenerator>();
             _fDetector = Substitute.For<ICollisionDetector>();
             _fConsoleLogger = Substitute.For<ILog>();
@@ -54,7 +54,22 @@ namespace ATM.Test.Unit
 
         }
 
+        [Test]
+        public void AddAirplanes()
+        {
+            IAirspace aSpace = new Airspace();
 
+            AirplaneInfo info1 = new AirplaneInfo();
+            AirplaneInfo info2 = new AirplaneInfo();
+
+            info1.Tag = "ABC123";
+            info2.Tag = "123ABC";
+
+            aSpace.Add(info1);
+            aSpace.Add(info2);
+
+            Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(2));
+        }
 
     }
 }

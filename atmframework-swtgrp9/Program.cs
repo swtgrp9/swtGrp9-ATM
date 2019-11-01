@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using atmframework_swtgrp9.Interfaces;
+using TransponderReceiver;
 
 namespace atmframework_swtgrp9
 {
@@ -11,6 +12,9 @@ namespace atmframework_swtgrp9
     {
         static void Main(string[] args)
         {
+            var receive = TransponderReceiverFactory.CreateTransponderDataReceiver();
+
+
             string logpath = ($"{Environment.CurrentDirectory}/SeparationLog.txt");
             FileLogger file = new FileLogger(logpath);
 
