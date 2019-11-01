@@ -68,7 +68,11 @@ namespace ATM.Test.Unit
             _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101120515273", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
 
             //Act
+            var testPlane1 = _uut.Generate(_fakeData1);
+            var testPlane2 = _uut.Generate(_fakeData2);
 
+            //Assert
+            Assert.That(testPlane2.ToString(), Is.EqualTo(_fakeTestPlane2.ToString()));
         }
     }
 }
