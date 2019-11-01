@@ -105,5 +105,7 @@ namespace ATM.Test.Unit
             Assert.That(() => listOfAirplanes[0].Tag, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
+        [Test]
+        public void GetAirplanesFromAirspace
     }
 }
