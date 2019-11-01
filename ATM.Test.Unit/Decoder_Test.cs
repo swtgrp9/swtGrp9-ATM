@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM.Test.Unit
 {
-    class Mapper_Test
+    class Decoder_Test
     {
     }
 }
