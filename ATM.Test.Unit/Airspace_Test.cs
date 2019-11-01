@@ -145,6 +145,14 @@ namespace ATM.Test.Unit
 
         }
 
+        [Test]
+        public void GetYMax_Returns90000()
+        {
+            int Ymax = uut.GetY2();
+
+            Assert.That(Ymax, Is.EqualTo(90000));
+        }
+
 
     }
 }
