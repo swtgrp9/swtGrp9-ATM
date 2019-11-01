@@ -36,7 +36,7 @@ namespace atmframework_swtgrp9
 
         public IAirplaneInfo Generate(string Data)
         {
-            var m = new Mapper(Data);
+            var m = new Decoder(Data);
 
             IAirplaneInfo airplane = new AirplaneInfo
             {

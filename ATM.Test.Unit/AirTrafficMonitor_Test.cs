@@ -38,6 +38,7 @@ namespace ATM.Test.Unit
             _fFileLogger = Substitute.For<FileLogger>();
             _fTransponderReceiver = Substitute.For<ITransponderReceiver>();
 
+
         }
 
     }
