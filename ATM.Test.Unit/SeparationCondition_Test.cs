@@ -59,5 +59,20 @@ namespace ATM.Test.Unit
             _testSeparationCondition.IsLogged = true;
             Assert.That(_testSeparationCondition.IsLogged, Is.Not.EqualTo(false));
         }
+
+
+        [Test]
+        public void TimeTest()
+        {
+            var uut = new DateTime(2019);
+            Assert.That(_testSeparationCondition.Time, Is.EqualTo(uut));
+        }
+
+
+        [Test]
+        public void IsEqualTest()
+        {
+
+        }
     }
 }
