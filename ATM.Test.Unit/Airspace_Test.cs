@@ -136,5 +136,14 @@ namespace ATM.Test.Unit
             Assert.That(Xmax, Is.EqualTo(90000));
         }
 
+        [Test]
+        public void GetXMin_Returns10000()
+        {
+            int Xmin = uut.GetX1();
+
+            Assert.That(Xmin, Is.EqualTo(10000));
+        }
+
+
     }
 }
