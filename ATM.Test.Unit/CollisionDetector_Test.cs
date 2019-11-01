@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace ATM.Test.Unit
         [SetUp]
         public void Setup()
         {
+
             _log = Substitute.For<ILog>();
 
             _uut = new CollisionDetector(_log);
@@ -69,5 +71,63 @@ namespace ATM.Test.Unit
 
         //    Assert.That(_uut.GetConditions().Count, Is.EqualTo(0));
         //}
+
+        [Test] //Test for om der Log funktionen bliver kaldt når der er collision
+        public void CheckIfFileLogCalled()
+        {
+
+            _log = Substitute.For<FileLogger, ILog>("test");
+
+            _uut = new CollisionDetector(_log);
+
+            _testAirspace = new List<IAirplaneInfo>();
+            _testAirplaneInfo1 = Substitute.For<IAirplaneInfo>();
+            _testAirplaneInfo2 = Substitute.For<IAirplaneInfo>();
+
+            _testAirspace.Add(_testAirplaneInfo1);
+            _testAirspace.Add(_testAirplaneInfo2);
+
+
+            _testAirplaneInfo1.X.Returns(35000);
+            _testAirplaneInfo1.Y.Returns(35000);
+            _testAirplaneInfo1.Altitude.Returns(600);
+
+            _testAirplaneInfo2.X.Returns(35000);
+            _testAirplaneInfo2.Y.Returns(35000);
+            _testAirplaneInfo2.Altitude.Returns(1100);
+
+            _uut.Register(_testAirspace);
+
+            _log.Received().Logs(LOGTYPE.COLLISIONS,  Arg.Any<List<string>>());
+
+        }
+        [Test]
+        public void CheckIfConsoleLogCalled()
+        {
+
+            _log = Substitute.For<ConsoleLogger, ILog>();
+
+            _uut = new CollisionDetector(_log);
+
+            _testAirspace = new List<IAirplaneInfo>();
+            _testAirplaneInfo1 = Substitute.For<IAirplaneInfo>();
+            _testAirplaneInfo2 = Substitute.For<IAirplaneInfo>();
+
+            _testAirspace.Add(_testAirplaneInfo1);
+            _testAirspace.Add(_testAirplaneInfo2);
+
+
+            _testAirplaneInfo1.X.Returns(35000);
+            _testAirplaneInfo1.Y.Returns(35000);
+            _testAirplaneInfo1.Altitude.Returns(600);
+
+            _testAirplaneInfo2.X.Returns(35000);
+            _testAirplaneInfo2.Y.Returns(35000);
+            _testAirplaneInfo2.Altitude.Returns(1100);
+
+            _uut.Register(_testAirspace);
+
+            _log.Received().Logs(Arg.Any<LOGTYPE>(), Arg.Any<List<string>>());
+        }
     }
 }
