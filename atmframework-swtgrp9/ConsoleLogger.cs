@@ -20,6 +20,7 @@ namespace atmframework_swtgrp9
 
         public void Logs(LOGTYPE type, List<string> logMessages)
         {
+            Console.WriteLine("HELLO FROM LOGS FUNCTION, PLEASE WORK");
             switch(type)
             {
                 case LOGTYPE.AIRSPACE:
@@ -61,6 +62,7 @@ namespace atmframework_swtgrp9
 
         private void PrintCollisions(List<string> messages)
         {
+            Console.WriteLine("Hello from Collisions, what a beautiful place");
             WidthChangeCheck();
             if (_clsnListSize != messages.Count)
             {
