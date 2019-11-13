@@ -19,8 +19,7 @@ namespace atmframework_swtgrp9
 
             AirTrafficMonitor ATM = new AirTrafficMonitor(logpath, new ConsoleLogger(), new CollisionDetector(logpath), new Airspace(), new AirplaneGenerator());
 
-            var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
-            var system = new TransponderReceiverClient(receiver);
+            TransponderReceiverClient client = new TransponderReceiverClient(ATM.OnEvent, TransponderReceiverFactory.CreateTransponderDataReceiver());
 
             while (true)
             {
