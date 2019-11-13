@@ -10,7 +10,10 @@ namespace atmframework_swtgrp9
 
         private double course;
 
-        public AirplaneInfo() { }
+        public AirplaneInfo()
+        {
+            
+        }
 
         public string Tag { get; set; }
 
@@ -24,6 +27,15 @@ namespace atmframework_swtgrp9
 
         public DateTime TimeStamp { get; set; }
         
+
+        public void SetAirplaneInfo(string tag, int x, int y, int z, DateTime time)
+        {
+            Tag = tag;
+            X = x;
+            Y = y;
+            Altitude = z;
+            TimeStamp = time;
+        }
         
         public override string ToString()
         {

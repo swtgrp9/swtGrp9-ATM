@@ -32,6 +32,8 @@ namespace atmframework_swtgrp9
             {
                 Angle += 360;
             }
+
+
             return Angle;
         }
 
