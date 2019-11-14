@@ -32,7 +32,6 @@ namespace atmframework_swtgrp9
         private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             _action(e.TransponderData);
-            Console.WriteLine("Event called");
         }
     }
 }
