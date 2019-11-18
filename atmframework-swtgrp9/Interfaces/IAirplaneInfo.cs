@@ -18,6 +18,5 @@ namespace atmframework_swtgrp9.Interfaces
 
         DateTime TimeStamp { get; set; }
 
-        void SetAirplaneInfo(string tag, int x, int y, int z, DateTime time);
     }
 }

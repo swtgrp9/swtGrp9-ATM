@@ -8,7 +8,6 @@ namespace atmframework_swtgrp9
     public class AirplaneInfo : IAirplaneInfo
     {
 
-        private double course;
 
         public AirplaneInfo()
         {
@@ -22,21 +21,12 @@ namespace atmframework_swtgrp9
         public int Y{ get; set; }
 
         public double Altitude { get; set; }
-        public double Course { get => course; set => course = value % 360; }
+        public double Course { get; set; }
         public double Velocity { get; set; }
 
         public DateTime TimeStamp { get; set; }
         
 
-        public void SetAirplaneInfo(string tag, int x, int y, int z, DateTime time)
-        {
-            Tag = tag;
-            X = x;
-            Y = y;
-            Altitude = z;
-            TimeStamp = time;
-        }
-        
         public override string ToString()
         {
             return Tag + " " +
