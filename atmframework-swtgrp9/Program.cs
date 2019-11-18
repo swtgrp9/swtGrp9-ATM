@@ -13,13 +13,13 @@ namespace atmframework_swtgrp9
     {
         private static void Main(string[] args)
         {
-            var receive = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
 
             FileLogger logpath = new FileLogger($"{Environment.CurrentDirectory}/SeparationLog.txt");
-            //FileLogger file = new FileLogger(logpath);
 
             AirTrafficMonitor ATM = new AirTrafficMonitor(logpath, new ConsoleLogger(), new CollisionDetector(logpath), new Airspace(), new AirplaneGenerator());
+
+            TransponderReceiverClient client = new TransponderReceiverClient(ATM.OnEvent, TransponderReceiverFactory.CreateTransponderDataReceiver());
 
             while (true)
             {
