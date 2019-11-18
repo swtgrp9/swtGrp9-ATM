@@ -16,9 +16,9 @@ namespace atmframework_swtgrp9
 
 
             string logpath = ($"{Environment.CurrentDirectory}/SeparationLog.txt");
-            FileLogger file = new FileLogger(logpath);
+            //FileLogger file = new FileLogger(logpath);
 
-            AirTrafficMonitor ATM = new AirTrafficMonitor(file, new ConsoleLogger(), new CollisionDetector(file), new Airspace(), new AirplaneGenerator());
+            //AirTrafficMonitor ATM = new AirTrafficMonitor(file, new ConsoleLogger(), new CollisionDetector(file), new Airspace(), new AirplaneGenerator());
         }
     }
 }
