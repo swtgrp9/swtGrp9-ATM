@@ -17,5 +17,6 @@ namespace atmframework_swtgrp9.Interfaces
         double Course { get; set; }
 
         DateTime TimeStamp { get; set; }
+
     }
 }

@@ -25,13 +25,16 @@ namespace atmframework_swtgrp9
 
         public double CalcCourse(IAirplaneInfo previous, IAirplaneInfo current)
         {
+
             var Theta = Math.Atan2(previous.Y - current.Y, previous.X - current.X);
             Theta += Math.PI / 2;
-            var Angle = Theta * (180 / Math.PI);
+            var Angle = Theta * (180 / (Math.PI));
             if (Angle < 0)
             {
                 Angle += 360;
             }
+
+
             return Angle;
         }
 

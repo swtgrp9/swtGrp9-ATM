@@ -40,8 +40,9 @@ namespace atmframework_swtgrp9
 
                 _collision.Register(_airspace.GetAirplanes());
             }
-
-            //i guess ting skal printes ud her
+            PrintAirspace();
+            PrintCollisions();
+            //Ting skulle printes ud her!
         }
 
         private void AcceptAirplane(IAirplaneInfo airplane)

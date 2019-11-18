@@ -8,9 +8,10 @@ namespace atmframework_swtgrp9
 {
     public class FileLogger : ILog
     {
-
-        public FileLogger()
+        private string _path;
+        public FileLogger(string path)
         {
+            _path = path;
         }
 
         public void Logs(LOGTYPE type, List<string> logMessages)

@@ -20,6 +20,7 @@ namespace atmframework_swtgrp9
 
         public void Logs(LOGTYPE type, List<string> logMessages)
         {
+            
             switch(type)
             {
                 case LOGTYPE.AIRSPACE:
@@ -33,7 +34,7 @@ namespace atmframework_swtgrp9
                     break;
 
                 case LOGTYPE.CLEAR:
-                    Console.Clear();
+                   // Console.Clear();
 
                     break;
 
@@ -61,6 +62,7 @@ namespace atmframework_swtgrp9
 
         private void PrintCollisions(List<string> messages)
         {
+            
             WidthChangeCheck();
             if (_clsnListSize != messages.Count)
             {
