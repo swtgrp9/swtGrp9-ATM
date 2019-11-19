@@ -14,7 +14,7 @@ using NUnit.Framework;
 namespace ATM.Test.Unit
 {
    [TestFixture]
-    public class AirplaneGenerator_Test
+    class AirplaneGenerator_Test
     {
         private AirplaneGenerator _uut;
         private string _fakeData1;
@@ -130,6 +130,7 @@ namespace ATM.Test.Unit
             Assert.That(airplanecourse, Is.EqualTo(result).Within(1.0));
         }
 
+        
         [TestCase(0, 1, 0, 0, 0, 1, 1)]
         [TestCase(0, 0, 0, 0, 0, 1, 0)]
         [TestCase(-1, -2, -1, -2, 0, 1, 1.4142135623730952)]
@@ -162,29 +163,8 @@ namespace ATM.Test.Unit
         }
 
 
-        //Test for at tjekke på om flyet ikke har rykket sig - smid exception.
-        //[Test]
-        //public void CalculateVelocityWithIdenticalTimestamps()
-        //{
-        //    _uut = new AirplaneGenerator();
-            
-        //    _fakeTestPlane1.Tag = "Test123";
-        //    _fakeTestPlane1.X = 0;
-        //    _fakeTestPlane1.Y = 0;
-        //    _fakeTestPlane1.Altitude = 0;
-        //    _fakeTestPlane1.TimeStamp = new DateTime(2019, 10, 31, 13, 45, 10);
-
-        //    _fakeTestPlane2.Tag = "Test123";
-        //    _fakeTestPlane2.X = 0;
-        //    _fakeTestPlane2.Y = 0;
-        //    _fakeTestPlane2.Altitude = 0;
-        //    _fakeTestPlane2.TimeStamp = new DateTime(2019, 10, 31, 13, 45, 10);
-
-        //    //var airplaneSpeedNoTimeDiff = _uut.CalcVelocity(_fakeTestPlane1, _fakeTestPlane2);
-
-        //    Assert.Throws<ArgumentException>(() => _uut.CalcVelocity(_fakeTestPlane1, _fakeTestPlane2));
-
-        //}
+        
+       
     }
 
 

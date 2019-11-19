@@ -198,23 +198,23 @@ namespace ATM.Test.Unit
             Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(result));
         }
 
-        [TestCase(1000000, 0, TestName = "Invalid airplane")]
-        public void NoValidate(int Valid, int result)
-        {
-            IAirspace aSpace = new Airspace();
+        //[TestCase(1000000, 0, TestName = "Invalid airplane")]
+        //public void NoValidate(int Valid, int result)
+        //{
+        //    IAirspace aSpace = new Airspace();
 
 
-            List<string> testData = new List<string>()
-            {
-                $"SAS123;10001;13000;{Valid};20191101120513900",
-            };
+        //    List<string> testData = new List<string>()
+        //    {
+        //        $"SAS123;10001;13000;{Valid};20191101120513900",
+        //    };
 
-            aSpace.Add(testData);
+        //    aSpace.Add(testData);
 
-            _uut.OnEvent(testData);
+        //    _uut.OnEvent(testData);
 
-            Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(result));
-        }
+        //    Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(result));
+        //}
 
 
     }
