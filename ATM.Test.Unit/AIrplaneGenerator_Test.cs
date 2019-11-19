@@ -13,12 +13,13 @@ using NUnit.Framework;
 
 namespace ATM.Test.Unit
 {
-   
-    class AirplaneGenerator_Test
+   [TestFixture]
+    public class AirplaneGenerator_Test
     {
         private AirplaneGenerator _uut;
         private string _fakeData1;
         private string _fakeData2;
+        private string _fakeData3;
         private AirplaneInfo _fakeTestPlane1;
         private AirplaneInfo _fakeTestPlane2;
 
@@ -31,6 +32,7 @@ namespace ATM.Test.Unit
             _fakeTestPlane2 = new AirplaneInfo();
             _fakeData1 = "SAS123;95000;31289;6500;20191101172101543";
             _fakeData2 = "SAS123;94846;31169;6500;20191101172102226";
+
         }
 
         //Test for om der kan genereres data for et fly
@@ -58,34 +60,33 @@ namespace ATM.Test.Unit
         {
             //Arrange
             _uut = new AirplaneGenerator();
-           
+
             _fakeTestPlane1.Tag = "SAS123";
             _fakeTestPlane1.X = 95000;
             _fakeTestPlane1.Y = 31289;
             _fakeTestPlane1.Altitude = 6500;
             _fakeTestPlane1.TimeStamp = DateTime.ParseExact("20191101172101543", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
 
-            
+
             _fakeTestPlane2.Tag = "SAS123";
             _fakeTestPlane2.X = 94846;
             _fakeTestPlane2.Y = 31169;
             _fakeTestPlane2.Altitude = 6500;
             _fakeTestPlane2.TimeStamp = DateTime.ParseExact("20191101172102226", "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
-            
-            _fakeTestPlane2.Course = 127.9;
             _fakeTestPlane2.Velocity = 285.8;
-           
-            
+            _fakeTestPlane2.Course = 127.9;
+
+
 
             //Act
-
+            var testPlane1 = _uut.Generate(_fakeData1);
             var testPlane2 = _uut.Generate(_fakeData2);
 
             //Assert
             Assert.That(testPlane2.ToString(), Is.EqualTo(_fakeTestPlane2.ToString()));
         }
 
-        
+
 
 
 
@@ -159,6 +160,31 @@ namespace ATM.Test.Unit
 
             Assert.That(airplaneSpeed, Is.EqualTo(result));
         }
+
+
+        //Test for at tjekke på om flyet ikke har rykket sig - smid exception.
+        //[Test]
+        //public void CalculateVelocityWithIdenticalTimestamps()
+        //{
+        //    _uut = new AirplaneGenerator();
+            
+        //    _fakeTestPlane1.Tag = "Test123";
+        //    _fakeTestPlane1.X = 0;
+        //    _fakeTestPlane1.Y = 0;
+        //    _fakeTestPlane1.Altitude = 0;
+        //    _fakeTestPlane1.TimeStamp = new DateTime(2019, 10, 31, 13, 45, 10);
+
+        //    _fakeTestPlane2.Tag = "Test123";
+        //    _fakeTestPlane2.X = 0;
+        //    _fakeTestPlane2.Y = 0;
+        //    _fakeTestPlane2.Altitude = 0;
+        //    _fakeTestPlane2.TimeStamp = new DateTime(2019, 10, 31, 13, 45, 10);
+
+        //    //var airplaneSpeedNoTimeDiff = _uut.CalcVelocity(_fakeTestPlane1, _fakeTestPlane2);
+
+        //    Assert.Throws<ArgumentException>(() => _uut.CalcVelocity(_fakeTestPlane1, _fakeTestPlane2));
+
+        //}
     }
 
 
