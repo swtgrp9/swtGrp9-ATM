@@ -51,6 +51,8 @@ namespace atmframework_swtgrp9
                 ClearAirspace(logMessages);
             }
 
+            Console.SetCursorPosition(0,0);
+
             for (int i = 0; i < logMessages.Count; i++)
             {
                 Console.SetCursorPosition(0, i);

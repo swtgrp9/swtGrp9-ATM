@@ -8,26 +8,26 @@ namespace atmframework_swtgrp9
 {
     public class AirTrafficMonitor
     {
-        private ICollisionDetector _collision;
-        private IAirspace _airspace;
+        private IAirspace<IAirplaneInfo> _airspace;
         private IAirplaneGenerator _generator;
-        private ILog _consoleLog;
         private ILog _fileLog;
+        private ILog _consoleLog;
+        private ICollisionDetector _collision;
 
         public AirTrafficMonitor(
+            IAirspace<IAirplaneInfo> airspace,
+            IAirplaneGenerator generator,
             ILog fileLog,
             ILog consoleLog,
-            ICollisionDetector register,
-            IAirspace airspace,
-            IAirplaneGenerator generator
+            ICollisionDetector register
         )
 
         {
+            _airspace = airspace;
+            _generator = generator;
             _fileLog = fileLog;
             _consoleLog = consoleLog;
             _collision = register;
-            _airspace = airspace;
-            _generator = generator;
         }
 
         public void OnEvent(List<string> flightData)
@@ -42,10 +42,9 @@ namespace atmframework_swtgrp9
             }
             PrintAirspace();
             PrintCollisions();
-            //Ting skulle printes ud her!
         }
 
-        private void AcceptAirplane(IAirplaneInfo airplane)
+        public void AcceptAirplane(IAirplaneInfo airplane)
         {
             int Xmin = _airspace.GetX1();
             int Xmax = _airspace.GetX2();
@@ -54,9 +53,9 @@ namespace atmframework_swtgrp9
             int Zmin = _airspace.GetAlt1();
             int Zmax = _airspace.GetAlt2();
 
-            if ((airplane.X < Xmin) || (airplane.X > Xmax) ||
-                (airplane.Y < Ymin) || (airplane.Y > Ymax) ||
-                (airplane.Altitude < Zmin) || (airplane.Altitude > Zmax))
+            if (airplane.X < Xmin || airplane.X > Xmax ||
+                airplane.Y < Ymin || airplane.Y > Ymax ||
+                airplane.Altitude < Zmin || airplane.Altitude > Zmax)
             {
                 _airspace.Remove(airplane);
             }

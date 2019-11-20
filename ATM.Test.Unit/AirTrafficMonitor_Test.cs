@@ -9,6 +9,7 @@ using atmframework_swtgrp9.Interfaces;
 using TransponderReceiver;
 using NSubstitute;
 using NSubstitute.Core;
+using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
 using Decoder = System.Text.Decoder;
@@ -19,17 +20,17 @@ namespace ATM.Test.Unit
     class AirTrafficMonitor_Test
     {
         //Fakes
-        private IAirspace _fAirspace;
+        private IAirspace<IAirplaneInfo> _fAirspace;
         private IAirplaneGenerator _fGenerator;
         private ICollisionDetector _fDetector;
         private ILog _fConsoleLogger;
         private ILog _fFileLogger;
         private ITransponderReceiver _fTransponderReceiver;
+       // private string _path;
 
-        private List<Decoder> _fDecoder;
-        private RawTransponderDataEventArgs _fEventArgs;
-        private Dictionary<string, AirplaneInfo> _faAirplaneInfo; //Skulle gerne kategorisere informationen i alfabetisk rækkefølge
-
+        //private List<Decoder> _fDecoder;
+        //private RawTransponderDataEventArgs _fEventArgs;
+        //private Dictionary<string, AirplaneInfo> _faAirplaneInfo; //Skulle gerne kategorisere informationen i alfabetisk rækkefølge
 
         //Unit under test
         private AirTrafficMonitor _uut;
@@ -39,79 +40,109 @@ namespace ATM.Test.Unit
         {
             // Arrange
             // (subs)
-            _fAirspace = Substitute.For<IAirspace>();
-            _fGenerator = Substitute.For<IAirplaneGenerator>();
-            _fDetector = Substitute.For<ICollisionDetector>();
-            _fConsoleLogger = Substitute.For<ILog>();
+            _fAirspace = Substitute.For<Airspace>();
+            _fGenerator = Substitute.For<AirplaneGenerator>();
+            _fDetector = Substitute.For<ICollisionDetector>(/*new FileLogger(_path)*/);
+            _fConsoleLogger = Substitute.For<ConsoleLogger>();
             _fFileLogger = Substitute.For<ILog>();
             _fTransponderReceiver = Substitute.For<ITransponderReceiver>();
+           // _path = $"{Environment.CurrentDirectory}/log.txt";
 
             _uut = new AirTrafficMonitor(
+                _fAirspace,
+                _fGenerator,
                 _fFileLogger,
                 _fConsoleLogger,
-                _fDetector,
-                _fAirspace,
-                _fGenerator);
+                _fDetector);
 
+        }
+
+        
+
+        [Test]
+        public void validAirplane() //Accepterer et fly med alle de korrekte værdier
+        {
+            var bla = _fGenerator.Generate("SAS321;12312;12312;10000;20190319123456788");
+
+            _uut.AcceptAirplane(bla);
+
+            _fDetector.Register(_fAirspace.GetAirplanes());
+
+            
+            Assert.That(_fAirspace.GetAirplanes().Contains(bla));
         }
 
         [Test]
-        public void AddAirplanes()
+        public void invalidAirlane() //Accepterer ikke et fly hvis der er forkerte værdier
         {
-            IAirspace aSpace = new Airspace();
+            var blabla = _fGenerator.Generate("SAS321;12312;12312;30000;20190319123456788");
 
-            AirplaneInfo info1 = new AirplaneInfo();
-            AirplaneInfo info2 = new AirplaneInfo();
+            _uut.AcceptAirplane(blabla);
 
-            info1.Tag = "ABC123";
-            info2.Tag = "123ABC";
+            _fDetector.Register(_fAirspace.GetAirplanes());
 
-            aSpace.Add(info1);
-            aSpace.Add(info2);
+            Assert.That(!_fAirspace.GetAirplanes().Contains(blabla));
 
-            Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(2));
         }
 
-        [Test]
-        public void AddMoreAirplanes()
-        {
-            IAirspace aSpace = new Airspace();
 
-            AirplaneInfo info1 = new AirplaneInfo();
-            AirplaneInfo info2 = new AirplaneInfo();
-            AirplaneInfo info3 = new AirplaneInfo();
-            AirplaneInfo info4 = new AirplaneInfo();
-            AirplaneInfo info5 = new AirplaneInfo();
-            AirplaneInfo info6 = new AirplaneInfo();
-            AirplaneInfo info7 = new AirplaneInfo();
-            AirplaneInfo info8 = new AirplaneInfo();
-            AirplaneInfo info9 = new AirplaneInfo();
-            AirplaneInfo info10 = new AirplaneInfo();
+        //[Test]
+        //public void AddAirplanes()
+        //{
+        //   // IAirspace aSpace = new Airspace();
 
-            info1.Tag = "ABC123";
-            info2.Tag = "123ABC";
-            info3.Tag = "XYZ123";
-            info4.Tag = "123XYZ";
-            info5.Tag = "NNN123";
-            info6.Tag = "123NNN";
-            info7.Tag = "KKK123";
-            info8.Tag = "123KKK";
-            info9.Tag = "OOO123";
-            info10.Tag = "123OOO";
+        //    AirplaneInfo info1 = new AirplaneInfo();
+        //    AirplaneInfo info2 = new AirplaneInfo();
 
-            aSpace.Add(info1);
-            aSpace.Add(info2);
-            aSpace.Add(info3);
-            aSpace.Add(info4);
-            aSpace.Add(info5);
-            aSpace.Add(info6);
-            aSpace.Add(info7);
-            aSpace.Add(info8);
-            aSpace.Add(info9);
-            aSpace.Add(info10);
+        //    info1.Tag = "ABC123";
+        //    info2.Tag = "123ABC";
 
-            Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(10));
-        }
+            //aSpace.Add(info1);
+            //aSpace.Add(info2);
+
+            //Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(2));
+        //}
+
+        //[Test]
+        //public void AddMoreAirplanes()
+        //{
+        //    IAirspace aSpace = new Airspace();
+
+        //    AirplaneInfo info1 = new AirplaneInfo();
+        //    AirplaneInfo info2 = new AirplaneInfo();
+        //    AirplaneInfo info3 = new AirplaneInfo();
+        //    AirplaneInfo info4 = new AirplaneInfo();
+        //    AirplaneInfo info5 = new AirplaneInfo();
+        //    AirplaneInfo info6 = new AirplaneInfo();
+        //    AirplaneInfo info7 = new AirplaneInfo();
+        //    AirplaneInfo info8 = new AirplaneInfo();
+        //    AirplaneInfo info9 = new AirplaneInfo();
+        //    AirplaneInfo info10 = new AirplaneInfo();
+
+        //    info1.Tag = "ABC123";
+        //    info2.Tag = "123ABC";
+        //    info3.Tag = "XYZ123";
+        //    info4.Tag = "123XYZ";
+        //    info5.Tag = "NNN123";
+        //    info6.Tag = "123NNN";
+        //    info7.Tag = "KKK123";
+        //    info8.Tag = "123KKK";
+        //    info9.Tag = "OOO123";
+        //    info10.Tag = "123OOO";
+
+        //    aSpace.Add(info1);
+        //    aSpace.Add(info2);
+        //    aSpace.Add(info3);
+        //    aSpace.Add(info4);
+        //    aSpace.Add(info5);
+        //    aSpace.Add(info6);
+        //    aSpace.Add(info7);
+        //    aSpace.Add(info8);
+        //    aSpace.Add(info9);
+        //    aSpace.Add(info10);
+
+        //    Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(10));
+        //}
 
 
         //[Test] //Test om den kan genkende hvis et fly bliver registreret 2 gange
@@ -164,57 +195,49 @@ namespace ATM.Test.Unit
 
 
         //Virker men accepterer begge fly
-        [TestCase(10001, 1, TestName = "valid airplane")]
-        //[TestCase(1000000, 0, TestName = "Invalid airplane")]
-        public void Validate(int Valid, int result)
-        {
-            IAirspace aSpace = new Airspace();
+        //[Test]
+        //public void Validate()
+        //{
+        //    IAirspace aSpace = new Airspace();
 
-            AirplaneInfo a1 = new AirplaneInfo();
-            //AirplaneInfo a2 = new AirplaneInfo();
+        //    AirplaneInfo a1 = new AirplaneInfo
+        //    {
+        //        Tag = "SAS213",
+        //        X = 15000,
+        //        Y = 13000,
+        //        Altitude = 10001
+        //    };
 
-            a1.Tag = "SAS213";
-            a1.X = 10001;
-            a1.Y = 13000;
-            a1.Altitude = Valid;
+        //    _uut.AcceptAirplane(a1);
 
-            //a2.Tag = "SAS321";
-            //a2.X = 15000;
-            //a2.Y = 14000;
-            //a2.Altitude = Valid;
+        //    Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(1));
+        //}
 
-            aSpace.Add(a1);
-            //aSpace.Add(a2);
+        //[Test]
+        //public void NoValidate()
+        //{
+        //    IAirspace aSpace = new Airspace();
 
+        //    List<string> testData = new List<String>
+        //    {
+        //        "SAS321;12312;12312;30000;20190319123456789"
+        //    };
+            
+        //    //testdata = new AirplaneInfo
+        //    //{
+        //    //    Tag = "SAS321",
+        //    //    X = 12312,
+        //    //    Y = 12312,
+        //    //    Altitude = 1000000000000
+        //    //};
 
+        //    _uut.OnEvent(testData);
 
-            //List<string> testData = new List<string>()
-            //{
-            //    $"SAS123;10001;13000;{Valid};20191101120513900",
-            //};
+            
+        //    Assert.That(_fAirspace.GetAirplanes().Count, Is.EqualTo(0));
 
-            //_uut.OnEvent(testData);
-
-            Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(result));
-        }
-
-        [TestCase(1000000, 0, TestName = "Invalid airplane")]
-        public void NoValidate(int Valid, int result)
-        {
-            IAirspace aSpace = new Airspace();
-
-
-            List<string> testData = new List<string>()
-            {
-                $"SAS123;10001;13000;{Valid};20191101120513900",
-            };
-
-            aSpace.Add(testData);
-
-            _uut.OnEvent(testData);
-
-            Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(result));
-        }
+        //   // Assert.That(aSpace.GetAirplanes().Count, Is.EqualTo(0));
+        //}
 
 
     }
