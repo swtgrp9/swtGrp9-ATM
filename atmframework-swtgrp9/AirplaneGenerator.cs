@@ -8,6 +8,7 @@ namespace atmframework_swtgrp9
 {
     public class AirplaneGenerator : IAirplaneGenerator
     {
+       
         private readonly Dictionary<string, IAirplaneInfo> PlanesDictionary;
         public AirplaneGenerator()
         {
@@ -31,7 +32,7 @@ namespace atmframework_swtgrp9
             var Angle = Theta * (180 / (Math.PI));
             if (Angle < 0)
             {
-                Angle += 360;
+                Angle += 360;     //This part is used in the tests, but for some reasons doesn't get coverage.
             }
 
 

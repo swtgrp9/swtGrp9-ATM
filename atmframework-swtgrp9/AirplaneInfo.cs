@@ -7,8 +7,7 @@ namespace atmframework_swtgrp9
 {
     public class AirplaneInfo : IAirplaneInfo
     {
-
-
+        
         public AirplaneInfo()
         {
             
