@@ -75,8 +75,7 @@ namespace atmframework_swtgrp9
 
                         if (tempCondition.IsLogged == false)
                         {
-                           
-                            Console.WriteLine("Time: " + tempCondition.Time + " Tag plane 1: " + tempCondition.PairAirplanes.Item1.Tag + " Tag plane 2: " + tempCondition.PairAirplanes.Item2.Tag);
+
                             _log.Logs(LOGTYPE.COLLISIONS, new List<string>()
                             {
                                 "Time: " + tempCondition.Time + " Tag plane 1: " + tempCondition.PairAirplanes.Item1.Tag + " Tag plane 2: " + tempCondition.PairAirplanes.Item2.Tag
@@ -91,7 +90,6 @@ namespace atmframework_swtgrp9
                         {
                             if (tempCondition.EqualCondition(_conditionList[k]))
                             {
-                                Console.WriteLine("Removing collision");
                                 _conditionList.Remove(_conditionList[k]);
                             }
                             
