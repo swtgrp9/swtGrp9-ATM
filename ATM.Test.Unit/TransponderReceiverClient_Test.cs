@@ -25,5 +25,29 @@ namespace ATM.Test.Unit
             _fTransponderReceiver = Substitute.For<ITransponderReceiver>();
         }
 
+        [Test]
+        public void DataReceivedTest() //Tester at TransponderReceiverClient opfører sig korrekt ved event fra TransponderReceiver.dll
+        {
+            var _fAction = Substitute.For<Action<List<string>>>();
+            var _actionCalled = false;
+
+            void _fOnAction(List<string> d)
+            {
+                _actionCalled = true;
+            }
+
+            _uut = new TransponderReceiverClient(_fOnAction, _fTransponderReceiver);
+
+            List<string> dataList = new List<string>();
+            dataList.Add("SAS123;10001;12000;11000;20191119183855890");
+
+            _fTransponderReceiver.TransponderDataReady +=
+                Raise.EventWith(this, new RawTransponderDataEventArgs(dataList));
+
+            Assert.That(_actionCalled, Is.EqualTo(true));
+
+
+        }
+
     }
 }
