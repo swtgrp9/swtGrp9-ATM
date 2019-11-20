@@ -27,6 +27,8 @@ namespace ATM.Test.Unit
         private ILog _fConsoleLogger;
         private ILog _fFileLogger;
         private ITransponderReceiver _fTransponderReceiver;
+
+        private ITime _fSeperationCondition;
        // private string _path;
 
         //private List<Decoder> _fDecoder;
@@ -47,6 +49,7 @@ namespace ATM.Test.Unit
             _fConsoleLogger = Substitute.For<ILog>();
             _fFileLogger = Substitute.For<ILog>();
             _fTransponderReceiver = Substitute.For<ITransponderReceiver>();
+            _fSeperationCondition = Substitute.For<ITime>();
            // _path = $"{Environment.CurrentDirectory}/log.txt";
 
             _uut = new AirTrafficMonitor(
@@ -57,52 +60,12 @@ namespace ATM.Test.Unit
                 _fDetector);
 
         }
-
-
-
-        //[Test]
-        //public void validAirplane() //Accepterer et fly med alle de korrekte værdier
-        //{
-        //IAirspace<IAirplaneInfo> aspace = new Airspace();
-        //IAirplaneGenerator gen = new AirplaneGenerator();
-        //I
-
-
-    //    var bla = gen.Generate("SAS321;12312;12312;10000;20190319123456788");
-
-    //    _uut.AcceptAirplane(bla);
-
-    //    _fDetector.Register(aspace.GetAirplanes());
-
-
-    //    Assert.That(aspace.GetAirplanes().Contains(bla));
-    //}
-
-    //[Test]
-    //    public void invalidAirlane() //Accepterer ikke et fly hvis der er forkerte værdier
-    //    {
-    //        IAirspace<IAirplaneInfo> aspace = new Airspace();
-    //        IAirplaneGenerator gen = new AirplaneGenerator();
-    //        ICollisionDetector det = new CollisionDetector();
-
-    //        var blabla = _fGenerator.Generate("SAS321;12312;12312;30000;20190319123456788");
-
-    //        _uut.AcceptAirplane(blabla);
-
-    //        _fDetector.Register(_fAirspace.GetAirplanes());
-
-    //        Assert.That(!_fAirspace.GetAirplanes().Contains(blabla));
-
-    //    }
-
-
         
 
         [Test]
-        public void PleaseWork()
+        public void OnEventPrintsAirspaces()
         {
-            var ooga1 = _fGenerator.Generate("SAS321;12312;12312;30000;20190319123456788");
-
+            
             var ooga = new AirplaneInfo();
 
             ooga.Tag = "SAS123";
@@ -124,15 +87,17 @@ namespace ATM.Test.Unit
 
         }
 
+       
+
         [Test]
-        public void PleaseWork2()
+        public void AcceptAirplanePlaneGetsRemoved()
         {
             
             var ooga = new AirplaneInfo();
 
             ooga.Tag = "SAS123";
             ooga.X = 10001;
-            ooga.Y = 99999;
+            ooga.Y = 30002;
             ooga.Altitude = 10003;
             ooga.TimeStamp = new DateTime(2019, 01, 01, 01, 01, 01, 111);
 
@@ -140,74 +105,62 @@ namespace ATM.Test.Unit
 
             testList.Add(ooga);
 
-            _fDetector.GetConditions().Returns(new List<SeparationCondition>());
-            _fAirspace.GetAirplanes().Returns(testList);
-
-            _uut.OnEvent(new List<string>());
-
-            _fConsoleLogger.Received().Logs(LOGTYPE.AIRSPACE, Arg.Is<List<string>>(x => x.Count == 1));
-
-        }
-
-        [Test]
-        public void PleaseWork3()
-        {
-           
-            var ooga = new AirplaneInfo();
-
-            ooga.Tag = "SAS123";
-            ooga.X = 10001;
-            ooga.Y = 10002;
-            ooga.Altitude = 10003;
-            ooga.TimeStamp = new DateTime(2019, 01, 01, 01, 01, 01, 111);
-
-            var testList = new List<IAirplaneInfo>();
-
-            testList.Add(ooga);
-
-
-            _fDetector.GetConditions().Returns(new List<SeparationCondition>());
-            _fAirspace.GetAirplanes().Returns(testList);
-            
 
             _uut.AcceptAirplane(ooga);
 
+
+            _fDetector.GetConditions().Returns(new List<SeparationCondition>());
+            _fAirspace.GetAirplanes().Returns(testList);
+
+            
+
             Assert.That(_fAirspace.GetAirplanes().Contains(ooga));
 
-            //_fConsoleLogger.Received().Logs(LOGTYPE.AIRSPACE, Arg.Is<List<string>>(x => x.Count == 1));
+           
 
         }
 
-        //[Test]
-        //public void PleaseWork4()
-        //{
 
+
+
+        /*Mislykket test af OnEvent hvor den skal kalde PrintCollision funktionen*/
+
+        //[Test]
+        //public void PrintCollisions()
+        //{
+        //    
         //    var ooga = new AirplaneInfo();
+        //    var ooga2 = new AirplaneInfo();
 
         //    ooga.Tag = "SAS123";
         //    ooga.X = 10001;
         //    ooga.Y = 10002;
-        //    ooga.Altitude = 30000;
+        //    ooga.Altitude = 10003;
         //    ooga.TimeStamp = new DateTime(2019, 01, 01, 01, 01, 01, 111);
+
+        //    ooga2.Tag = "SAS321";
+        //    ooga2.X = 10001;
+        //    ooga2.Y = 10002;
+        //    ooga2.Altitude = 10003;
+        //    ooga2.TimeStamp = new DateTime(2019, 01, 01, 01, 01, 01, 111);
 
         //    var testList = new List<IAirplaneInfo>();
 
         //    testList.Add(ooga);
+        //    testList.Add(ooga2);
+
+        //    _fSeperationCondition = new SeparationCondition(DateTime.Now, new Tuple<IAirplaneInfo, IAirplaneInfo>(ooga, ooga2));
 
 
-        //    _fDetector.GetConditions().Returns(new List<SeparationCondition>());
+        //    var SepList = new List<>();
+
+        //    _fConsoleLogger.Logs(LOGTYPE.AIRSPACE, new List<string>());
         //    _fAirspace.GetAirplanes().Returns(testList);
 
+        //    _uut.OnEvent(new List<string>());
 
-        //    _uut.AcceptAirplane(ooga);
-
-        //    Assert.That(!_fAirspace.GetAirplanes().Contains(ooga));
-
-        //    //_fConsoleLogger.Received().Logs(LOGTYPE.AIRSPACE, Arg.Is<List<string>>(x => x.Count == 1));
+        //    _fDetector.Received().GetConditions().Returns(new List<SeparationCondition>());
 
         //}
-
-
-
     }
 }
