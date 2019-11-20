@@ -71,6 +71,7 @@
     <Compile Include="AirplaneInfo_Test.cs" />
     <Compile Include="Airspace_Test.cs" />
     <Compile Include="AirTrafficMonitor_Test.cs" />
+    <Compile Include="TransponderReceiverClient_Test.cs" />
     <Compile Include="CollisionDetector_Test.cs" />
     <Compile Include="ConsoleLogger_Test.cs" />
     <Compile Include="FileLogger_Test.cs" />

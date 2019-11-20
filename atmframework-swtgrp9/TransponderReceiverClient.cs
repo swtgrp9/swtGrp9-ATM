@@ -10,7 +10,7 @@ using TransponderReceiver;
 
 namespace atmframework_swtgrp9
 {
-    class TransponderReceiverClient
+    public class TransponderReceiverClient
     {
         private ITransponderReceiver receiver;
         private readonly Action<List<string>> _action;
