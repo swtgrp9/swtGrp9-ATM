@@ -17,7 +17,7 @@ namespace atmframework_swtgrp9
 
             FileLogger logpath = new FileLogger($"{Environment.CurrentDirectory}/SeparationLog.txt");
 
-            AirTrafficMonitor ATM = new AirTrafficMonitor(logpath, new ConsoleLogger(), new CollisionDetector(logpath), new Airspace(), new AirplaneGenerator());
+            AirTrafficMonitor ATM = new AirTrafficMonitor(/*logpath, new ConsoleLogger(), new CollisionDetector(logpath),*/ new Airspace(), new AirplaneGenerator());
 
             TransponderReceiverClient client = new TransponderReceiverClient(ATM.OnEvent, TransponderReceiverFactory.CreateTransponderDataReceiver());
 

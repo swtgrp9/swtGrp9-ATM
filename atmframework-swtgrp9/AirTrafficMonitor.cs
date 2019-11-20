@@ -8,24 +8,24 @@ namespace atmframework_swtgrp9
 {
     public class AirTrafficMonitor
     {
-        private ICollisionDetector _collision;
-        private IAirspace _airspace;
+        ////private ICollisionDetector _collision;
+        private IAirspace<IAirplaneInfo> _airspace;
         private IAirplaneGenerator _generator;
-        private ILog _consoleLog;
-        private ILog _fileLog;
+        //private ILog _consoleLog;
+        //private ILog _fileLog;
 
         public AirTrafficMonitor(
-            ILog fileLog,
-            ILog consoleLog,
-            ICollisionDetector register,
-            IAirspace airspace,
+            //ILog fileLog,
+            //ILog consoleLog,
+            //ICollisionDetector register,
+            IAirspace<IAirplaneInfo> airspace,
             IAirplaneGenerator generator
         )
 
         {
-            _fileLog = fileLog;
-            _consoleLog = consoleLog;
-            _collision = register;
+            //_fileLog = fileLog;
+            //_consoleLog = consoleLog;
+            //_collision = register;
             _airspace = airspace;
             _generator = generator;
         }
@@ -38,10 +38,10 @@ namespace atmframework_swtgrp9
 
                 AcceptAirplane(plane);
 
-                _collision.Register(_airspace.GetAirplanes());
+                //_collision.Register(_airspace.GetAirplanes());
             }
             PrintAirspace();
-            PrintCollisions();
+            //PrintCollisions();
             //Ting skulle printes ud her!
         }
 
@@ -75,23 +75,23 @@ namespace atmframework_swtgrp9
             {
                 logMessages.Add(airplane.ToString());
             }
-            _consoleLog.Logs(LOGTYPE.AIRSPACE, logMessages);
+            //_consoleLog.Logs(LOGTYPE.AIRSPACE, logMessages);
         }
 
-        private void PrintCollisions()
-        {
-            var conditions = _collision.GetConditions();
-            var logMessages = new List<string>();
+        //private void PrintCollisions()
+        //{
+        //    var conditions = _collision.GetConditions();
+        //    var logMessages = new List<string>();
 
-            foreach (var condition in conditions)
-            {
-                var logmsg =
-                    $"{condition.Time:dd/MM/yyyy HH:mm:ss} {condition.PairAirplanes.Item1.Tag} {condition.PairAirplanes.Item2.Tag}";
-                logMessages.Add(logmsg);
-            }
+        //    foreach (var condition in conditions)
+        //    {
+        //        var logmsg =
+        //            $"{condition.Time:dd/MM/yyyy HH:mm:ss} {condition.PairAirplanes.Item1.Tag} {condition.PairAirplanes.Item2.Tag}";
+        //        logMessages.Add(logmsg);
+        //    }
 
-            _consoleLog.Logs(LOGTYPE.COLLISIONS, logMessages);
-        }
+        //    _consoleLog.Logs(LOGTYPE.COLLISIONS, logMessages);
+        //}
 
     }
 }

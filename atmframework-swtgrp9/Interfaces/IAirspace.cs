@@ -4,7 +4,7 @@ using System.Text;
 
 namespace atmframework_swtgrp9.Interfaces
 {
-    public interface IAirspace
+    public interface IAirspace<T>
     {
         int GetX1();
         int GetX2();
@@ -15,11 +15,11 @@ namespace atmframework_swtgrp9.Interfaces
 
         int GetAlt2();
 
-        void Add(IAirplaneInfo info);
+        void Add(T info);
 
-        void Remove(IAirplaneInfo info);
+        void Remove(T info);
 
-        List<IAirplaneInfo> GetAirplanes();
+        List<T> GetAirplanes();
 
     }
 }
